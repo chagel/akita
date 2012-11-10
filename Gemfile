@@ -7,6 +7,8 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'compass-rails'
+  gem 'zurb-foundation'
 end
 
 gem 'jquery-rails'
@@ -14,6 +16,8 @@ gem 'jquery-rails'
 gem "mongoid", ">= 3.0.3"
 gem "omniauth", ">= 1.1.0"
 gem "omniauth-google-oauth2"
+gem 'kaminari'
+gem 'slim'
 
 
 group :development do

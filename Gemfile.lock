@@ -30,6 +30,7 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.2)
     arel (3.0.2)
+    bcrypt-ruby (3.0.1)
     builder (3.0.4)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -65,6 +66,11 @@ GEM
       nokogiri (>= 1.5.0)
     daemons (1.1.9)
     database_cleaner (0.9.1)
+    devise (2.1.2)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (~> 3.1)
+      warden (~> 1.2.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
     eventmachine (1.0.0)
@@ -128,6 +134,11 @@ GEM
       mongoid (>= 3.0.1)
       rake
       rspec (>= 2.9)
+    mongoid_rails_migrations (1.0.0)
+      activesupport (>= 3.2.0)
+      bundler (>= 1.0.0)
+      rails (>= 3.2.0)
+      railties (>= 3.2.0)
     moped (1.2.7)
     multi_json (1.3.6)
     multipart-post (1.1.5)
@@ -148,6 +159,7 @@ GEM
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     origin (1.0.9)
+    orm_adapter (0.4.0)
     polyglot (0.3.3)
     quiet_assets (1.0.1)
       railties (~> 3.1)
@@ -198,6 +210,8 @@ GEM
       tilt (~> 1.3)
     sassy-math (1.2)
       compass (~> 0.11)
+    select2-rails (3.2.1)
+      thor (~> 0.14)
     selenium-webdriver (2.25.0)
       childprocess (>= 0.2.5)
       libwebsocket (~> 0.1.3)
@@ -227,6 +241,8 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    warden (1.2.1)
+      rack (>= 1.0)
     xpath (0.1.4)
       nokogiri (~> 1.3)
     zurb-foundation (3.2.1)
@@ -244,6 +260,7 @@ DEPENDENCIES
   compass-rails
   cucumber-rails (>= 1.3.0)
   database_cleaner (>= 0.8.0)
+  devise
   factory_girl_rails (>= 4.0.0)
   guard-rspec
   guard-spork
@@ -252,6 +269,7 @@ DEPENDENCIES
   launchy (>= 2.1.2)
   mongoid (>= 3.0.3)
   mongoid-rspec (>= 1.4.6)
+  mongoid_rails_migrations (>= 1.0.0)
   omniauth (>= 1.1.0)
   omniauth-google-oauth2
   quiet_assets
@@ -259,6 +277,7 @@ DEPENDENCIES
   rb-fsevent
   rspec-rails (>= 2.11.0)
   sass-rails (~> 3.2.3)
+  select2-rails
   slim
   spork
   terminal-notifier-guard

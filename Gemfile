@@ -9,11 +9,14 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'compass-rails'
   gem 'zurb-foundation'
+  gem "select2-rails"
 end
 
 gem 'jquery-rails'
 
+gem "devise"
 gem "mongoid", ">= 3.0.3"
+gem "mongoid_rails_migrations", ">= 1.0.0"
 gem "omniauth", ">= 1.1.0"
 gem "omniauth-google-oauth2"
 gem 'kaminari'

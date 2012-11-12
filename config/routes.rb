@@ -1,9 +1,20 @@
 Akita::Application.routes.draw do
-  match '/auth/:provider/callback' => 'sessions#create'
-  match '/auth/failure' => 'sessions#failure'
-  # match '/signin' => 'sessions#new', :as => :signin
-  match "/login" => redirect("/auth/google_oauth2")
-  match '/signout' => 'sessions#destroy', :as => :signout
-
+	devise_for :users, :controllers => { 
+		:omniauth_callbacks => "users/omniauth_callbacks",
+		:sessions => 'sessions'
+	} do 
+		match :logout, :to => 'sessions#destroy'
+	end
+	resources :users
+	resources :links do 
+		collection do 
+			get 'page/:page', :action => :index
+		end
+		
+		member do
+			get 'go', action: :go
+		end
+	end
+	
   root :to  => 'welcome#index'
 end

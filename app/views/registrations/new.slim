@@ -1,0 +1,40 @@
+div.centerModal
+	div.text-center.pb3
+		= link_to image_tag('logo.png'), root_path
+
+	= form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f|
+		= devise_error_messages!
+		div.five.columns.centered
+			div.panel.radius
+				div.row
+					div.two.columns
+						= f.label :email, '电子邮件', class: 'right inline'
+					div.ten.columns
+						= f.text_field :email, class: 'five email'
+					
+				div.row
+					div.two.columns
+						= f.label :password, '密码', class: 'right inline'
+					div.ten.columns
+						= f.password_field :password, class: 'five'
+
+				div.row
+					div.two.columns
+						= f.label :password_confirmation, '确认密码', class: 'right inline'
+					div.ten.columns
+						= f.password_field :password_confirmation, class: 'five'
+
+				div.row
+					div.two.columns
+						= f.label :nickname, '昵称', class: 'right inline'
+					div.ten.columns
+						= f.text_field :nickname, class: 'five'
+
+				div.row
+					div.two.columns 
+					div.three.columns 
+						/ = f.label :remember_me, "Forget pwd?"
+						= link_to '使用Google账户登录', user_omniauth_authorize_path(:google_oauth2), class: 'underline'
+					div.seven.columns
+						= f.submit '注册', class: 'button round'
+						

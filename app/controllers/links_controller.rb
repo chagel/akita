@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+	before_filter :authenticate_user!
 	def create
 		tag_names = params[:link].delete 'tags'
 		@link = current_user.links.build(params[:link])

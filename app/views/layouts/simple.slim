@@ -1,0 +1,18 @@
+doctype html
+html
+	head
+		meta charset="utf-8"
+		meta name="viewport" content="width=device-width, initial-scale=1.0"
+		title 
+			= content_for?(:title) ? yield(:title) : "Akita Project"
+		= stylesheet_link_tag    "application"
+		= javascript_include_tag "application"
+		= csrf_meta_tags
+
+	body.fullbackground
+		- flash.each do |name, msg|
+			- if msg.is_a?(String)
+			  = content_tag :div, :class => "alert-box #{name}" do
+			    = msg.html_safe
+			      
+		=yield

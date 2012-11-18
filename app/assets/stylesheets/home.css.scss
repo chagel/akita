@@ -1,5 +1,38 @@
-.plr1 {
+#error_explanation{
+	width: 500px;
+	border: 1px solid #ccc;
+	padding: 15px;
+	margin: 0 auto;
+	margin-bottom:30px;
+	color: red;
+		h2 {
+			color: red;
+			font-size:16px;
+		}
+		ul {
+			margin-left:50px
+		}
+}
+
+.underline{
+	text-decoration: underline;
+}
+
+.centerModal{
+	margin:120px auto;
+}
+
+.fullbackground{
+	background-color: #333;
+	/*background: image-url("akita_bg.jpg") no-repeat;*/
+}
+
+.pd1 {
 	padding: 0 1em;
+}
+
+.pb3 {
+	padding-bottom: 3em;
 }
 
 .pr1{
@@ -37,17 +70,17 @@
   padding-bottom: 3px; padding-top: 3px; text-align: center; font-size:12px;
 }
 .pagination a {
-  border-right: #eee 1px solid; padding-right: 5px; border-top: #eee 1px solid; padding-left: 5px; padding-bottom: 2px; margin: 2px; border-left: #eee 1px solid; color: #036cb4; padding-top: 2px; border-bottom: #eee 1px solid; text-decoration: none
+  border-right: #eee 1px solid; padding-right: 5px; border-top: #eee 1px solid; padding-left: 5px; padding-bottom: 2px; margin: 2px; border-left: #eee 1px solid; color: #036cb4; padding-top: 2px; border-bottom: #eee 1px solid; text-decoration: none;
 }
 .pagination a:hover {
-  border-right: #999 1px solid; border-top: #999 1px solid; border-left: #999 1px solid; color: #666; border-bottom: #999 1px solid
+  border-right: #999 1px solid; border-top: #999 1px solid; border-left: #999 1px solid; color: #666; border-bottom: #999 1px solid;
 }
 .pagination a:active {
-  border-right: #999 1px solid; border-top: #999 1px solid; border-left: #999 1px solid; color: #666; border-bottom: #999 1px solid
+  border-right: #999 1px solid; border-top: #999 1px solid; border-left: #999 1px solid; color: #666; border-bottom: #999 1px solid;
 }
 .pagination .current {
-  border-right: #036cb4 1px solid; padding-right: 5px; border-top: #036cb4 1px solid; padding-left: 5px; font-weight: bold; padding-bottom: 2px; margin: 2px; border-left: #036cb4 1px solid; color: #fff; padding-top: 2px; border-bottom: #036cb4 1px solid; background-color: #036cb4
+  border-right: #036cb4 1px solid; padding-right: 5px; border-top: #036cb4 1px solid; padding-left: 5px; font-weight: bold; padding-bottom: 2px; margin: 2px; border-left: #036cb4 1px solid; color: #fff; padding-top: 2px; border-bottom: #036cb4 1px solid; background-color: #036cb4;
 }
 .pagination .disabled {
-  border-right: #eee 1px solid; padding-right: 5px; border-top: #eee 1px solid; padding-left: 5px; padding-bottom: 2px; margin: 2px; border-left: #eee 1px solid; color: #ddd; padding-top: 2px; border-bottom: #eee 1px solid
+  border-right: #eee 1px solid; padding-right: 5px; border-top: #eee 1px solid; padding-left: 5px; padding-bottom: 2px; margin: 2px; border-left: #eee 1px solid; color: #ddd; padding-top: 2px; border-bottom: #eee 1px solid;
 }

@@ -17,7 +17,7 @@ class LinksController < ApplicationController
 	end
 
 	def index
-		@links = Link.order_by('id desc').page(params[:page])
+		@links = current_user.links.order_by('id desc').page(params[:page])
 	end
 
 	def go

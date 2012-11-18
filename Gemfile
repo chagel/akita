@@ -21,6 +21,7 @@ gem "omniauth", ">= 1.1.0"
 gem "omniauth-google-oauth2"
 gem 'kaminari'
 gem 'slim'
+gem 'nokogiri'
 
 
 group :development do

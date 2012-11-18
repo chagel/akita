@@ -63,3 +63,5 @@ Akita::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'weed30.com' }
 end
+
+APP_URL = "http://weed30.com"

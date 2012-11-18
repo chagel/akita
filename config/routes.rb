@@ -3,7 +3,9 @@ Akita::Application.routes.draw do
 		:omniauth_callbacks => "users/omniauth_callbacks",
 		:sessions => 'sessions',
 		:registrations => 'registrations',
-	} do 
+	} 
+	
+	devise_scope :user do 
 		get :login, :to => 'sessions#new'
 		match :logout, :to => 'sessions#destroy'
 		match :signup, :to => 'registrations#new'
@@ -19,6 +21,9 @@ Akita::Application.routes.draw do
 		end
 	end
 
+	resources :favorites
+	resources :urls
+	
 	match :apply, controller: 'applies'
 	
   root :to  => 'welcome#index'

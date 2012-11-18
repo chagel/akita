@@ -1,7 +1,9 @@
 class WelcomeController < ApplicationController
+	before_filter :authenticate_user!
 	before_filter :redirect_apply
 
 	def index
+		@links = Link.order_by('id desc').page(params[:page])
 	end
 
 	private

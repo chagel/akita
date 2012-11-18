@@ -6,27 +6,58 @@ div#help.reveal-modal.medium.modal
     table.twelve
       tr
         td.right
-          b g 
+          span.hkey g 
           | then 
-          b h
+          span.hkey h
           |: 
         td Go home
       tr
         td.right
-          b g 
+          span.hkey g 
           | then 
-          b i
+          span.hkey l
           |: 
         td Go to my links
       tr
         td.right
-          b n
+          | (
+          span.hkey shift
+          | ) + 
+          span.hkey j
+          |: 
+        td Next item (& jump to)
+
+      tr
+        td.right
+          | (
+          span.hkey shift
+          | ) + 
+          span.hkey k
+          |: 
+        td Previous item (& jump to)
+      tr
+        td.right
+          span.hkey g 
+          | then 
+          span.hkey g
+          |: 
+        td First item
+      tr
+        td.right
+          span.hkey n
           |: 
         td New link
       tr
         td.right
-          b b
+          span.hkey u
           |: 
-        td New link
+        td Go back
+      tr
+        td.right
+          span.hkey Shift
+          | + 
+          span.hkey &#47;
+          |: 
+        td Open shortcuts table
 
     a.close-reveal-modal &#215;

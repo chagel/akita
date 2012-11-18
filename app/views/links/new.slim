@@ -21,7 +21,7 @@
 		div.two.columns
 			= f.label :description, class: "right inline"
 		div.ten.columns
-			= f.text_area :description, class: 'nine'
+			= f.text_area :description, class: 'nine', rows: 5
 
 	div.row
 		div.two.columns
@@ -29,6 +29,16 @@
 			= f.submit :Submit, class: 'radius button'
 
 javascript:
-	/ $('#link_tags').select2({
-	/     tags:[],
-	/     tokenSeparators: [","]});
+	$(function(){
+		$('#link_url').live('change', function(){
+			var url = $(this).val();
+			$.ajax({
+			  type: "POST",
+			  url: "/urls.json",
+			  data: { id: url}
+			}).done(function(result) {
+				obj = JSON && JSON.parse(result) || $.parseJSON(result);
+			  alert( "title: " + obj['title'] );
+			});
+		})
+	})

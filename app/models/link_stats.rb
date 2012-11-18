@@ -1,6 +1,3 @@
-#encoding: utf-8
-require 'digest'
-
 class LinkStats
 	include Mongoid::Document
 	field :clicks, type: Integer, default: 0

@@ -270,6 +270,7 @@ DEPENDENCIES
   mongoid (>= 3.0.3)
   mongoid-rspec (>= 1.4.6)
   mongoid_rails_migrations (>= 1.0.0)
+  nokogiri
   omniauth (>= 1.1.0)
   omniauth-google-oauth2
   quiet_assets

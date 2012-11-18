@@ -1,6 +1,6 @@
-div#home.links
+div
 	- @links.each do |link|
-			div.link 
+			div 
 				h6
 					= link_to link.title, go_link_path(link), target: 'blank'
 
@@ -15,7 +15,7 @@ div#home.links
 
 						span |
 						span.pd1
-							/ = link_to link.user.nickname, link.user
+							= link_to(link.user.nickname, link.user)
 					
 						span |
 						span.pd1
@@ -23,15 +23,9 @@ div#home.links
 
 						= link.tags[0].name unless link.tags.empty?
 
+					br
+					br
 
 div	
 	= paginate @links
 
-javascript:
-	$(function(){
-		$('div.link').live('click', function(){
-			$('div.active').removeClass('active');
-			$(this).toggleClass('active');
-		})
-	})
-	

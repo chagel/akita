@@ -1,0 +1,17 @@
+div.centerModal
+	= form_for Invite.new do |f|
+		div.five.columns.centered
+			div.panel.radius
+				div.row
+					div.two.columns
+						= f.label :code, 'Invitation Code', class: 'right inline'
+					div.ten.columns
+						= f.text_field :code, class: 'six'
+
+				div.row
+					div.two.columns 
+					div.three.columns 
+						= link_to 'No code yet?', apply_path, class: 'underline'
+					div.seven.columns
+						= f.submit 'Continue', class: 'radius button'
+						

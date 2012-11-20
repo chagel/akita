@@ -23,6 +23,7 @@ Akita::Application.routes.draw do
 
 	resources :favorites
 	resources :urls
+	resources :invites
 	
 	match :apply, controller: 'applies'
 	

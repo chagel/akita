@@ -44,6 +44,7 @@ class User
 
   ## business columns
   field :nickname, type: String
+  field :state, type:String, :default => 'pending'
 
   has_many :authentications, class_name: 'Authentication'
   has_many :links

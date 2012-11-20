@@ -22,6 +22,7 @@ gem "omniauth-google-oauth2"
 gem 'kaminari'
 gem 'slim'
 gem 'nokogiri'
+gem 'rails_admin'
 
 
 group :development do

@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require foundation
 //= require select2
-//= require_tree .
+//= require mousetrap
+//= require main

@@ -5,13 +5,14 @@ class UrlsController < ApplicationController
 	def create
 		if params[:id] =~ /^[http|https]/
 			begin
+				puts "#{Time.now} => Fetching url[#{params[:id]}] "
 				doc = Nokogiri::HTML(open(params[:id]))
 				doc.xpath('//head/title').each do |title|
-				  render :json => {:title =>  title.content }.to_json and return
+					puts "#{Time.now} => End"
+				  render :json => {"title" =>  title.content }.to_json and return
 				end
-
 			rescue Exception => ex
-				render :json => {:error => "#{ex}"}.to_json
+				render :json => {"error" => "#{ex}"}.to_json
 			end
 		end
 	end

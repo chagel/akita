@@ -1,12 +1,12 @@
+#encoding: utf-8
+
 class LinksController < ApplicationController
 	before_filter :authenticate_user!
 	def create
 		tag_names = params[:link].delete 'tags'
 		@link = current_user.links.build(params[:link])
-		p '----------------------'
-		puts tag_names
-		tag_names.split(/,/) do |name|
-			@link.tags.build Tag.new(name: name)
+		tag_names.split(/[,|，]/).each do |name|
+			@link.tags << Tag.find_or_initialize_by(name: name.strip)
 		end
 
 		if @link.save

@@ -1,15 +1,14 @@
-ul.breadcrumbs
-	li
-		= link_to 'home', root_path
-	li.current
-		span favorites
-		
-div#favorites.links
+div.links
 	- @links.each do |link|
 			div.link 
-				h6
+				h6.left
 					= link_to link.title, go_link_path(link), target: 'blank'
 
+				div.action.hide.right.mr1
+					= link_to image_tag('fav_blank.png', class: 'favorite'), favorites_path(id: link.id), method: :post, remote: true
+
+				div.clear
+				
 				h5
 					small
 						span.pr1
@@ -21,8 +20,7 @@ div#favorites.links
 
 						span |
 						span.pd1
-							= link_to(link.user.nickname, '#')
-
+							= link_to link.user.nickname, '#'
 						- unless link.tags.empty?
 							span.ml1
 								- link.tags.each do |tag|

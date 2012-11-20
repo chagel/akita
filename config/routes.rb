@@ -10,7 +10,7 @@ Akita::Application.routes.draw do
 		match :logout, :to => 'sessions#destroy'
 		match :signup, :to => 'registrations#new'
 	end
-	# resources :users
+	resources :users
 	resources :links do 
 		collection do 
 			get 'page/:page', :action => :index

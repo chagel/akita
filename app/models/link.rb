@@ -19,7 +19,7 @@ class Link
 	after_save :update_tags_count
 
 	def domain
-		self.url.match /(\w*\.(com.cn|com|net.cn|net|org.cn|org|gov.cn|gov|cn|mobi|me|info|name|biz|cc|tv|asia|hk|ly|st|us|it|io|com.uk))/
+		self.url.match /(\w*\.[a-z.0-9-]*)/
 	end
 
 	def visit!

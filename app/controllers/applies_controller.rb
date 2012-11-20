@@ -5,7 +5,7 @@ class AppliesController < ApplicationController
     elsif request.post?
       @apply = Apply.new(params[:apply])
       if @apply.save
-        redirect_to :back, notice: "Thanks! Your request is in my priority list."
+        redirect_to :back, notice: "Thanks! Your request is on my priority list."
       else
         redirect_to :back, alert: "Apply error: #{@apply.errors.full_messages}"
       end

@@ -1,31 +1,7 @@
-div
-	- @links.each do |link|
-			div 
-				h6
-					= link_to link.title, go_link_path(link), target: 'blank'
-
-				h5
-					small
-						span.pr1
-							= beauty_time link.created_at
-
-						span |
-						span.pd1
-							= link.domain
-
-						span |
-						span.pd1
-							= link_to(link.user.nickname, link.user)
-					
-						span |
-						span.pd1
-							= "clicks: #{link.link_stats.try(:clicks) || 0}"
-
-						= link.tags[0].name unless link.tags.empty?
-
-					br
-					br
-
-div	
-	= paginate @links
-
+ul.breadcrumbs
+	li
+		= link_to 'home', root_path
+	li.current
+		span links
+		
+= render partial: 'layouts/list'

@@ -1,44 +1,40 @@
-= form_for Link.new do |f|
-	div.row
-		div.two.columns
-			= f.label :url, class: "right inline"
-		div.ten.columns
-			= f.text_field :url, class: 'nine'
+ul.breadcrumbs
+	li
+		= link_to 'home', root_path
+	li 
+		= link_to 'links', links_path
+	li.current
+		span new
 
-	div.row
-		div.two.columns
-			= f.label :title, class: "right inline"
-		div.ten.columns
-			= f.text_field :title, class: 'nine'
+div#new_link
+	= form_for Link.new do |f|
+		div.row
+			div.two.columns
+				= f.label :url, class: "right inline"
+			div.ten.columns
+				= f.text_field :url, class: 'nine left'
+				= image_tag 'loading.gif', id: 'url_loading', class: 'left ml1 hide', width: 16
 
-	div.row
-		div.two.columns
-			= f.label :tags, class: "right inline"
-		div.ten.columns
-			= f.text_field :tags, class: 'nine', value: nil, placeholder: 'keywords seprated by comma'
+		div.row
+			div.two.columns
+				= f.label :title, class: "right inline"
+			div.ten.columns
+				= f.text_field :title, class: 'nine'
 
-	div.row
-		div.two.columns
-			= f.label :description, class: "right inline"
-		div.ten.columns
-			= f.text_area :description, class: 'nine', rows: 5
+		div.row
+			div.two.columns
+				= f.label :tags, class: "right inline"
+			div.ten.columns
+				= f.text_field :tags, class: 'nine', value: nil, placeholder: 'keywords seprated by comma'
 
-	div.row
-		div.two.columns
-		div.ten.columns
-			= f.submit :Submit, class: 'radius button'
+		div.row
+			div.two.columns
+				= f.label :description, class: "right inline"
+			div.ten.columns
+				= f.text_area :description, class: 'nine', rows: 5
 
-javascript:
-	$(function(){
-		$('#link_url').live('change', function(){
-			var url = $(this).val();
-			$.ajax({
-			  type: "POST",
-			  url: "/urls.json",
-			  data: { id: url}
-			}).done(function(result) {
-				obj = JSON && JSON.parse(result) || $.parseJSON(result);
-			  alert( "title: " + obj['title'] );
-			});
-		})
-	})
+		div.row
+			div.two.columns
+			div.ten.columns
+				= f.submit :Submit, class: 'radius button'
+

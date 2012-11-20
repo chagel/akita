@@ -15,3 +15,5 @@
 /tmp
 
 config/initializers/omniauth.rb
+
+.DS_Store

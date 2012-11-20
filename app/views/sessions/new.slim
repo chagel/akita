@@ -1,19 +1,19 @@
 div.centerModal
 	div.text-center.pb3
-		= link_to image_tag('logo.png'), root_path
+		/ = link_to image_tag('logo.png'), root_path
 
 	= form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
 		div.five.columns.centered
 			div.panel.radius
 				div.row
 					div.two.columns
-						= f.label :email, '电子邮件', class: 'right inline'
+						= f.label :email, 'Email', class: 'right inline'
 					div.ten.columns
 						= f.text_field :email, class: 'five email'
 					
 				div.row
 					div.two.columns
-						= f.label :password, '密码', class: 'right inline'
+						= f.label :password, 'Password', class: 'right inline'
 					div.ten.columns
 						= f.password_field :password, class: 'five'
 
@@ -21,7 +21,7 @@ div.centerModal
 					div.two.columns 
 					div.three.columns 
 						/ = f.label :remember_me, "Forget pwd?"
-						= link_to '使用Google账户登录', user_omniauth_authorize_path(:google_oauth2), class: 'underline'
+						= link_to 'Login with Google account', user_omniauth_authorize_path(:google_oauth2), class: 'underline'
 					div.seven.columns
-						= f.submit '登录', class: 'button round'
+						= f.submit 'Login', class: 'radius button'
 						

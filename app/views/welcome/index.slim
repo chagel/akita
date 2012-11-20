@@ -1,37 +1,5 @@
-div#home.links
-	- @links.each do |link|
-			div.link 
-				h6
-					= link_to link.title, go_link_path(link), target: 'blank'
-
-				h5
-					small
-						span.pr1
-							= beauty_time link.created_at
-
-						span |
-						span.pd1
-							= link.domain
-
-						span |
-						span.pd1
-							/ = link_to link.user.nickname, link.user
-					
-						span |
-						span.pd1
-							= "clicks: #{link.link_stats.try(:clicks) || 0}"
-
-						= link.tags[0].name unless link.tags.empty?
-
-
-div	
-	= paginate @links
-
-javascript:
-	$(function(){
-		$('div.link').live('click', function(){
-			$('div.active').removeClass('active');
-			$(this).toggleClass('active');
-		})
-	})
-	
+/ ul.breadcrumbs
+/ 	li.current
+/ 		span home
+		
+= render partial: 'layouts/list'

@@ -2,23 +2,23 @@ div.centerModal
 	div.five.columns.centered
 		div.panel.radius
 			div.text-center
-				h4 内测申请
+				h4 Invited Access only
 				p
 			= form_for Apply.new, :url => {:action => :apply} do |f|
 				div.row
 					div.two.columns
-						= f.label :email, "电子邮件", class: "right inline"
+						= f.label :email, "Email", class: "right inline"
 					div.ten.columns
 						= f.text_field :email, class: 'five email text-left', placeholder: ""
 				div.row
 					div.two.columns
-						= f.label :description, "其他描述", class: "right inline"
+						= f.label :description, "WTF", class: "right inline"
 					div.ten.columns
-						= f.text_area :description, rows: 4, placeholder: "申请理由或者能打动我的话 :D", class: 'five'
+						= f.text_area :description, rows: 4, placeholder: "try to impress me ..", class: 'five'
 				div.row
 					div.two.columns
 					div.three.columns
-						= link_to '已有邀请登录', login_path, class: 'underline'
+						= link_to 'Got code?', login_path, class: 'underline'
 					div.seven.columns
 						= f.submit :GO, class: 'radius button success'
 						

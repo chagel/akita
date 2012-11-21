@@ -51,7 +51,7 @@ class User
   has_many :favorites
 
   def self.create_with_omniauth(auth)
-	  create! do |user|
+	  create do |user|
 	  	new_auth = Authentication.new
 	    new_auth.provider = auth['provider']
 	    new_auth.uid = auth['uid']

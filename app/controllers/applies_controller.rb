@@ -1,4 +1,5 @@
 class AppliesController < ApplicationController
+  skip_before_filter :verify_code
   layout 'simple'
   def apply
     if request.get?

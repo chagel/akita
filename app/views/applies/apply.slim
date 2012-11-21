@@ -1,5 +1,11 @@
 div.centerModal
 	div.five.columns.centered
+		div.panel.radius.gray-bg
+			h4 
+				small.prot They aren't coming, they're already there. - Reading 2.0
+
+	div.clear
+	div.five.columns.centered
 		div.panel.radius
 			div.text-center
 				h4 Invited Access only
@@ -9,12 +15,12 @@ div.centerModal
 					div.two.columns
 						= f.label :email, "Email", class: "right inline"
 					div.ten.columns
-						= f.text_field :email, class: 'five email text-left', placeholder: ""
+						= f.text_field :email, class: 'five email text-left', placeholder: "", value: current_user && current_user.email
 				div.row
 					div.two.columns
-						= f.label :description, "WTF", class: "right inline"
+						= f.label :description, "Say sth.", class: "right inline"
 					div.ten.columns
-						= f.text_area :description, rows: 4, placeholder: "try to impress me ..", class: 'five'
+						= f.text_area :description, rows: 4, placeholder: "Try to impress me..", class: 'five'
 				div.row
 					div.two.columns
 					div.three.columns

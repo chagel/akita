@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      = content_for?(:title) ? yield(:title) : "W E E D 3 0"
+      = content_for?(:title) ? yield(:title) : "Akita(Codename)"
     meta charset="utf-8"
     = stylesheet_link_tag "application" 
     = javascript_include_tag "application"
@@ -30,14 +30,14 @@ html
       div.two.columns.pull-ten
         - if user_signed_in?
           = gravatar_image_url current_user.email
-        ul.side-nav
-          li
-            = link_to 'links', links_path
-          li
-            = link_to 'favorites', favorites_path
-          li.divider
-          li
-            = link_to "new", new_link_path 
+          ul.side-nav
+            li
+              = link_to 'links', links_path
+            li
+              = link_to 'favorites', favorites_path
+            li.divider
+            li
+              = link_to "new", new_link_path 
 
     footer.row
       div.twelve.columns

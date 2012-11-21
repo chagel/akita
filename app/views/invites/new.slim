@@ -2,6 +2,10 @@ div.centerModal
 	= form_for Invite.new do |f|
 		div.five.columns.centered
 			div.panel.radius
+				h5.text-center
+					| Welcome, 
+					= link_to current_user.nickname, logout_path, method: :delete
+				p
 				div.row
 					div.two.columns
 						= f.label :code, 'Invitation Code', class: 'right inline'

@@ -1,8 +1,7 @@
 doctype html
 html
-  = render :partial => 'layouts/head'
-
-	body.fullbackground
+	= render :partial => 'layouts/head' 
+	body.fullbackground 
 		- flash.each do |name, msg|
 			- if msg.is_a?(String)
 			  = content_tag :div, :class => "alert-box #{name}" do

@@ -1,12 +1,6 @@
 doctype html
 html
-  head
-    title
-      = content_for?(:title) ? yield(:title) : "Akita(Codename)"
-    meta charset="utf-8"
-    = stylesheet_link_tag "application" 
-    = javascript_include_tag "application"
-    = csrf_meta_tags
+  = render :partial => 'layouts/head'
   body
     div.row.topbar
       div.three.columns
@@ -32,12 +26,12 @@ html
           = gravatar_image_url current_user.email
           ul.side-nav
             li
-              = link_to 'links', links_path
+              = link_to "links", links_path
             li
-              = link_to 'favorites', favorites_path
+              = link_to "favorites", favorites_path
             li.divider
-            li
-              = link_to "new", new_link_path 
+            li.link_new
+              = link_to "new", 'javascript:void(0);' 
 
     footer.row
       div.twelve.columns
@@ -48,7 +42,7 @@ html
           div.six.columns
             ul.link-list.right
               li
-                = link_to 'bookmarklet', "javascript:u=document.location.href;t=document.title; s=window.getSelection();void(window.open('#{APP_URL}/links/new?link[title]='+escape(t)+'&link[description]='+escape(s)+'&link[url]='+escape(u),'_blank','width=600,height=500,status=no,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no'));"
+                = link_to 'bookmarklet', "javascript:u=document.location.href;t=document.title; s=window.getSelection();void(window.open('#{APP_URL}/links/new?link[title]='+escape(t)+'&link[description]='+escape(s)+'&link[url]='+escape(u),'_blank','width=600,height=380,status=no,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no'));"
               li
                 = link_to "keyboard", '#shortcus', onclick: "Mousetrap.trigger('shift+/');"
               li
@@ -57,4 +51,5 @@ html
                 = link_to "donate", '#'
 
     = render :partial => 'layouts/shortcuts'
+    = render :partial => 'links/new_modal'
   

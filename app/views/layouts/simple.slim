@@ -1,12 +1,6 @@
 doctype html
 html
-  head
-    title
-      = content_for?(:title) ? yield(:title) : "Akita(Codename)"
-    meta charset="utf-8"
-    = stylesheet_link_tag "application" 
-    = javascript_include_tag "application"
-    = csrf_meta_tags
+  = render :partial => 'layouts/head'
 
 	body.fullbackground
 		- flash.each do |name, msg|
@@ -14,4 +8,4 @@ html
 			  = content_tag :div, :class => "alert-box #{name}" do
 			    = msg.html_safe
 			      
-		=yield
+		= yield

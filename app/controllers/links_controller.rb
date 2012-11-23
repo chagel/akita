@@ -20,6 +20,10 @@ class LinksController < ApplicationController
 		@links = current_user.links.order_by('id desc').page(params[:page])
 	end
 
+	def new
+		render layout: nil
+	end
+
 	def go
 		@link = Link.find params[:id]
 		@link.visit!

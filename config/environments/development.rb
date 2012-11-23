@@ -32,4 +32,4 @@ Akita::Application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3456' }
 end
 
-APP_URL = "http://localhost:1234"
+APP_URL = "http://localhost:3456"

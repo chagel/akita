@@ -1,40 +1,34 @@
-ul.breadcrumbs
-	li
-		= link_to 'home', root_path
-	li 
-		= link_to 'links', links_path
-	li.current
-		span new
+doctype html
+html
+	= render :partial => 'layouts/head'
+	body 
+		ul.breadcrumbs
+			li
+				= link_to 'home', root_path, target: '_blank'
+			li 
+				= link_to 'links', links_path, target: '_blank'
+			li.current
+				span new
 
-div#new_link
-	= form_for Link.new do |f|
-		div.row
-			div.two.columns
-				= f.label :url, class: "right inline"
-			div.ten.columns
-				= f.text_field :url, class: 'nine left'
-				= image_tag 'loading.gif', id: 'url_loading', class: 'left ml1 hide', width: 16
+		div#new_link.white-bg
+			= form_for Link.new do |f|
+				div.row
+					div.ten.columns
+						= f.text_field :url, class: 'nine left', placeholder: 'url', value: params[:link] && params[:link]['url']
+						= image_tag 'loading.gif', id: 'url_loading', class: 'left ml1 hide', width: 16
 
-		div.row
-			div.two.columns
-				= f.label :title, class: "right inline"
-			div.ten.columns
-				= f.text_field :title, class: 'nine'
+				div.row
+					div.ten.columns
+						= f.text_field :title, class: 'nine', placeholder: 'title', value: params[:link] && params[:link]['title']
 
-		div.row
-			div.two.columns
-				= f.label :tags, class: "right inline"
-			div.ten.columns
-				= f.text_field :tags, class: 'nine', value: nil, placeholder: 'keywords seprated by comma'
+				div.row
+					div.ten.columns
+						= f.text_field :tags, class: 'nine', value: nil, placeholder: 'tags (keywords seprated by comma)', value: params[:link] && params[:link]['tags']
 
-		div.row
-			div.two.columns
-				= f.label :description, class: "right inline"
-			div.ten.columns
-				= f.text_area :description, class: 'nine', rows: 5
+				div.row
+					div.ten.columns
+						= f.text_area :description, class: 'nine', rows: 5, placeholder: 'description', value: params[:link] && params[:link]['description']
 
-		div.row
-			div.two.columns
-			div.ten.columns
-				= f.submit :Submit, class: 'radius button'
-
+				div.row
+					div.ten.columns
+						= f.submit :Submit, class: 'radius button'

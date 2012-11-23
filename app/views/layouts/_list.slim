@@ -5,7 +5,8 @@ div.links
 					= link_to link.title, go_link_path(link), target: 'blank'
 
 				div.action.hide.right.mr1
-					= link_to image_tag('fav_blank.png', class: 'favorite'), favorites_path(id: link.id), method: :post, remote: true
+
+					= link_to image_tag(current_user.favorites.where(link_id: link.id).present? ? 'fav_golden.png' : 'fav_blank.png', class: 'favorite'), favorites_path(id: link.id), method: :post, remote: true
 
 				div.clear
 				

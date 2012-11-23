@@ -1,5 +1,3 @@
-$('form #link_url').focus()
-
 # link form auto fetching title
 $('form #link_url').live 'change', ->
 	$.ajax(type: "POST", 
@@ -14,37 +12,52 @@ $('form #link_url').live 'change', ->
 $('div.action a').live 'ajax:success', (event, data, status, xhr) ->
 	$(this).find('img.favorite').attr('class', '').addClass('favorite ' + data.action)
 
+# application menu items
+$('li.link_new').live 'click', -> 
+	$("#new_link").reveal()
+
 # highlight item
-$('div.links div.link').live 'click', -> 
-		$('div.links div.active').removeClass 'active'
-		$('div.links div.action').addClass 'hide'
-		$(this).toggleClass 'active'
-		$(this).find('div.action').removeClass 'hide'
+$('div.links div.link').live 'mouseenter', -> 
+	highlight this
+
+normalize = (row) ->
+	$(row).removeClass 'active'
+	$(row).find('div.action').addClass 'hide'
 
 # shortcuts functions
+highlight = (row) ->
+	normalize @highlighted_row if @highlighted_row
+	$(row).toggleClass 'active'
+	$(row).find('div.action').removeClass 'hide'
+	@highlighted_row = row
+
 goto = (top, offset) ->
 	$('html, body').animate(scrollTop: top + offset, 200)
 
 next = (jump) ->
  	startRow = $('div.links').find('div.active') || $('div.links div:first-child')
- 	if (the=$(startRow).next()).length
- 		the.trigger 'click'
- 		goto the.offset().top, -10 if jump
+ 	if (row=$(startRow).next()).length
+ 		highlight row
+ 		goto row.offset().top, -10 if jump
 	
 previous = (jump) ->
 	startRow = $('div.links').find 'div.active'
-	if (the = $(startRow).prev()).length
-		the.trigger 'click'
-		goto the.offset().top, -10 if jump
+	if (row = $(startRow).prev()).length
+		highlight row
+		goto row.offset().top, -10 if jump
 
 first = ->
-	if (the = $('div.links div:first-child')).length
-		$(the).trigger('click');
-		goto the.offset().top, -10
+	if (row = $('div.links div:first-child')).length
+		highlight row
+		goto row.offset().top, -10
+
+links_new = ->
+	 $("#new_link").reveal()
+	 # $('form #link_url').focus()
 
 # keyboard shortcut bindings
 Mousetrap.bind 'shift+/', (e) -> $('#help').reveal()
-Mousetrap.bind 'n', (e) -> window.parent.location.replace('/links/new')
+Mousetrap.bind 'n', (e) -> links_new()
 Mousetrap.bind 'u', (e) -> window.history.back()
 Mousetrap.bind 'g h', (e) -> window.parent.location.replace('/')
 Mousetrap.bind 'g l', (e) -> window.parent.location.replace('/links')

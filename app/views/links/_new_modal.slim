@@ -1,0 +1,33 @@
+div#new_link.reveal-modal.medium
+	a.close-reveal-modal &#215;
+	= form_for Link.new do |f|
+		div.row
+			div.two.columns
+				= f.label :url, class: "right inline"
+			div.ten.columns
+				= f.text_field :url, class: 'eleven left'
+				= image_tag 'loading.gif', id: 'url_loading', class: 'left hide', width: 16
+
+		div.row
+			div.two.columns
+				= f.label :title, class: "right inline"
+			div.ten.columns
+				= f.text_field :title, class: 'eleven'
+
+		div.row
+			div.two.columns
+				= f.label :tags, class: "right inline"
+			div.ten.columns
+				= f.text_field :tags, class: 'eleven', value: nil, placeholder: 'keywords seprated by comma'
+
+		div.row
+			div.two.columns
+				= f.label :description, class: "right inline"
+			div.ten.columns
+				= f.text_area :description, class: 'eleven', rows: 5
+
+		div.row
+			div.two.columns
+			div.ten.columns
+				= f.submit :Submit, class: 'radius button'
+

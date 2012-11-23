@@ -1,0 +1,7 @@
+head
+  title
+    = content_for?(:title) ? yield(:title) : "Akita(Codename)"
+  meta charset="utf-8"
+  = stylesheet_link_tag "application" 
+  = javascript_include_tag "application"
+  = csrf_meta_tags

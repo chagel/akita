@@ -1,4 +1,4 @@
-product:
+production:
   sessions:
     default:
       database: akita

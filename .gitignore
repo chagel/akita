@@ -19,3 +19,4 @@ config/initializers/omniauth.rb
 .DS_Store
 
 /db/seeds.rb
+/public/assets

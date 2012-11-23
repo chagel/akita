@@ -10,6 +10,7 @@ group :assets do
   gem 'compass-rails'
   gem 'zurb-foundation', '>= 3.2.2'
   gem "select2-rails"
+  gem 'therubyracer', :platforms => :ruby
 end
 
 gem 'jquery-rails'

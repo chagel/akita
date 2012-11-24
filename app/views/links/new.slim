@@ -10,8 +10,16 @@ html
 			li.current
 				span new
 
-		div#new_link.white-bg
+		div#new_link
+			div.row
+				div.ten.columns
+					- flash.each do |name, msg|
+					  - if msg.is_a?(String) 
+					  	= content_tag :div, :class => "alert-box #{name}" do
+					  		= msg.html_safe
+
 			= form_for Link.new do |f|
+				= f.hidden_field :render, value: :window
 				div.row
 					div.ten.columns
 						= f.text_field :url, class: 'nine left', placeholder: 'url', value: params[:link] && params[:link]['url']

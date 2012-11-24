@@ -19,9 +19,6 @@ Akita::Application.routes.draw do
 			get 'page/:page', :action => :index
 		end
 		
-		member do
-			get 'go', action: :go
-		end
 	end
 
 	resources :favorites

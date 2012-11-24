@@ -1,6 +1,7 @@
 div#new_link.reveal-modal.medium
 	a.close-reveal-modal &#215;
 	= form_for Link.new do |f|
+		= f.hidden_field :render, value: :modal
 		div.row
 			div.two.columns
 				= f.label :url, class: "right inline"

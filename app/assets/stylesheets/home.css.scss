@@ -3,10 +3,7 @@ body {
 }
 
 .topbar {
-	margin-top: 3px;
-	padding-top: 5px;
-	background-color: #036cb4;
-	height: 30px;
+	margin-top: 10px;
 }
 
 .clear {
@@ -19,6 +16,11 @@ body {
 		color: #fff;
 	}
 }
+
+.blue {
+	color: #003399;
+}
+
 .white-bg{
 	background-color: #fff;
 }
@@ -76,11 +78,18 @@ img.favorite:hover {
 	  border-radius: 5px;
 	  background-color: #fefefe;
 
-	  h6 {
-	  	padding-bottom: 5px;
+	  .title {
+	  	padding-bottom: 6px;
+	  	font-size:14px;
+	  	font-weight:bold;
 	  	a:hover {
 		  	color: #777;
 		  }
+	  }
+
+	  .subtitle {
+	  	font-size: 11px;
+	  	color:#999;
 	  }
 	}
 
@@ -155,8 +164,16 @@ img.favorite:hover {
 	margin-right: 3em;	
 }
 
+.pd1p{
+	padding: 3px;
+}
+
 .prot{
 	font-family: Georgia
+}
+
+.bold{
+	font-weight:bold;
 }
 
 .modal {

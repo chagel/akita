@@ -2,21 +2,8 @@ doctype html
 html
   = render :partial => 'layouts/head'
   body
-    - flash.each do |name, msg|
-      - if msg.is_a?(String)
-        = content_tag :div, :class => "alert-box #{name}" do
-          = msg.html_safe
-          
+
     div.row.topbar
-      div.three.columns
-        h5.white
-          = link_to "WEED 三十", root_path
-      div.nine.columns
-        ul.link-list.right.white
-          li
-            = link_to "Home", root_path
-          li
-            = render_login_and_signup_link
 
     div.row
       div.ten.columns.push-two
@@ -28,8 +15,14 @@ html
 
       div.two.columns.pull-ten
         - if user_signed_in?
-          = gravatar_image_url current_user.email
+          div.left
+            = gravatar_image_url current_user.email, '20x20'
+          div.left.pd1p.bold
+            = link_to short_text(current_user.nickname || current_user.email, 8), '#'
+          div.clear
           ul.side-nav
+            li
+              = link_to "home", root_path
             li
               = link_to "links", links_path
             li
@@ -47,7 +40,7 @@ html
           div.six.columns
             ul.link-list.right
               li
-                = link_to 'bookmarklet', "javascript:u=document.location.href;t=document.title; s=window.getSelection();void(window.open('#{APP_URL}/links/new?link[title]='+encodeURIComponent(t)+'&link[description]='+encodeURIComponent(s)+'&link[url]='+encodeURIComponent(u),'_blank','width=600,height=380,status=no,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no'));"
+                = link_to 'bookmarklet', "javascript:(function(){u=document.location.href;t=document.title; s=window.getSelection();void(window.open('#{APP_URL}/links/new?link[title]='+encodeURIComponent(t)+'&link[description]='+encodeURIComponent(s)+'&link[url]='+encodeURIComponent(u),'_blank','width=600,height=380,left=300,top=200,status=no,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no')); })();"
               li
                 = link_to "keyboard", '#shortcus', onclick: "Mousetrap.trigger('shift+/');"
               li
@@ -55,6 +48,6 @@ html
               li
                 = link_to "donate", '#'
 
-    = render :partial => 'layouts/shortcuts'
+    = render :partial => 'pages/shortcuts'
     = render :partial => 'links/new_modal'
   

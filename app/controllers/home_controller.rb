@@ -1,4 +1,4 @@
-class WelcomeController < ApplicationController
+class HomeController < ApplicationController
 	before_filter :redirect_apply
 
 	def index

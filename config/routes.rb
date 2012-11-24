@@ -17,15 +17,21 @@ Akita::Application.routes.draw do
 	resources :links do 
 		collection do 
 			get 'page/:page', :action => :index
-		end
-		
+		end		
 	end
 
-	resources :favorites
+	resources :favorites do 
+		collection do 
+			get 'page/:page', :action => :index
+		end
+	end
 	resources :urls
 	resources :invites
 	
 	match :apply, controller: 'applies'
-	
-  root :to  => 'welcome#index'
+
+	resources :home do 
+		get 'page/:page', :action => :index, :on => :collection	  
+	end
+  root :to  => 'home#index'
 end

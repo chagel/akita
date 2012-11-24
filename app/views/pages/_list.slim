@@ -1,0 +1,31 @@
+div.links
+	- @links.each do |link|
+			div.link 
+				div.left.title
+					= link_to link.title, link, title: link.description, target: 'blank'
+
+				div.action.hide.right.mr1
+
+					= link_to image_tag(current_user.favorites.where(link_id: link.id).present? ? 'fav_golden.png' : 'fav_blank.png', class: 'favorite'), favorites_path(id: link.id), method: :post, remote: true
+
+				div.clear
+				
+				div.subtitle
+					span.pr1
+						= beauty_time link.created_at
+
+					span |
+					span.pd1
+						= link.domain
+
+					span |
+					span.pd1
+						= link_to link.user.nickname, '#'
+					- unless link.tags.empty?
+						span.ml1
+							- link.tags.each do |tag|
+								= link_to tag.name, '#', class: 'tag'
+
+div	
+	= paginate @links
+

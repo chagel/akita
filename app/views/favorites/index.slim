@@ -4,30 +4,5 @@ ul.breadcrumbs
 	li.current
 		span favorites
 		
-div#favorites.links
-	- @links.each do |link|
-			div.link 
-				h6
-					= link_to link.title, go_link_path(link), target: 'blank'
-
-				h5
-					small
-						span.pr1
-							= beauty_time link.created_at
-
-						span |
-						span.pd1
-							= link.domain
-
-						span |
-						span.pd1
-							= link_to(link.user.nickname, '#')
-
-						- unless link.tags.empty?
-							span.ml1
-								- link.tags.each do |tag|
-									= link_to tag.name, '#', class: 'tag'
-
-div	
-	= paginate @links
+= render partial: 'pages/list'
 

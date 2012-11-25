@@ -1,3 +1,9 @@
+$('a.invite').live 'click', ->
+	$("#new_invite").reveal()
+
+$('a.shortcuts').live 'click', ->
+	open_shortcuts()	
+
 # link form auto fetching title
 $('form #link_url').live 'change', ->
 	$.ajax(type: "POST", 
@@ -14,7 +20,7 @@ $('div.action a').live 'ajax:success', (event, data, status, xhr) ->
 
 # application menu items
 $('li.link_new').live 'click', -> 
-	$("#new_link").reveal()
+	links_new()
 
 # highlight item
 $('div.links div.link').live 'mouseenter', -> 
@@ -54,11 +60,14 @@ first = ->
 		goto row.offset().top, -10
 
 links_new = ->
-	 $("#new_link").reveal()
-	 # $('form #link_url').focus()
+	$("#new_link").reveal()
+	# $('form #link_url').focus()
+
+open_shortcuts = ->
+	$('#help').reveal()
 
 # keyboard shortcut bindings
-Mousetrap.bind 'shift+/', (e) -> $('#help').reveal()
+Mousetrap.bind 'shift+/', (e) -> open_shortcuts()
 Mousetrap.bind 'n', (e) -> links_new()
 Mousetrap.bind 'u', (e) -> window.history.back()
 Mousetrap.bind 'g h', (e) -> window.parent.location.replace('/')

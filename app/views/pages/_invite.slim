@@ -1,0 +1,18 @@
+div#new_invite.reveal-modal.medium
+  h5 Invitation codes
+  hr 
+  p
+  
+  - current_user.invites.each do |invite|
+    div.row
+      div.eight.columns
+        pre.code
+          = invite.code
+      div.four.columns
+        - unless uid = invite.activated_user_id
+          span.label.success.radius available
+        - else
+          span.label.secondary.radius 
+            = link_to 'activated', user_path(invite.activated_user_id)
+
+  a.close-reveal-modal &#215;

@@ -1,29 +1,30 @@
 div.centerModal
-	= form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
-		div.seven.columns.centered
-			div.panel.radius
-				dl.tabs.pill.text-center
-					dd.active
-						= link_to 'Login', '#'
-					dd
-						= link_to 'Register', signup_path
-				div.row
-					div.two.columns
-						= f.label :email, 'Email', class: 'right inline'
-					div.ten.columns
-						= f.text_field :email, class: 'five email'
-					
-				div.row
-					div.two.columns
-						= f.label :password, 'Password', class: 'right inline'
-					div.ten.columns
-						= f.password_field :password, class: 'five'
-
-				div.row
-					div.two.columns 
-					div.three.columns 
-						/ = f.label :remember_me, "Forget pwd?"
-						= link_to 'Sign in with Google account', user_omniauth_authorize_path(:google_oauth2), class: 'underline'
-					div.seven.columns
-						= f.submit 'Login', class: 'radius button'
+	div.row
+		= form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
+			div.six.columns.centered
+				div.panel.radius
+					dl.tabs.pill.text-center
+						dd.active
+							= link_to 'Login', '#'
+						dd
+							= link_to 'Register', signup_path
+					div.row
+						div.three.columns
+							= f.label :email, 'Email', class: 'right inline'
+						div.nine.columns
+							= f.text_field :email, class: 'email'
 						
+					div.row
+						div.three.columns
+							= f.label :password, 'Password', class: 'right inline'
+						div.nine.columns
+							= f.password_field :password, class: 'password'
+
+					div.row
+						div.three.columns 
+						div.five.columns 
+							/ = f.label :remember_me, "Forget pwd?"
+							= link_to 'Sign in with Google account', user_omniauth_authorize_path(:google_oauth2), class: 'underline'
+						div.four.columns
+							= f.submit 'Login', class: 'radius button right inline'
+							

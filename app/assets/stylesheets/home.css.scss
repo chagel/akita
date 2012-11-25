@@ -17,6 +17,11 @@ body {
 	}
 }
 
+.gray {
+	color: #999;
+	a {color: #999;}
+}
+
 .blue {
 	color: #003399;
 }
@@ -136,6 +141,10 @@ img.favorite:hover {
 	/*background: image-url("akita_bg.jpg") no-repeat;*/
 }
 
+.eighty-per{
+	width: 80%;
+}
+
 .pd1 {
 	padding: 0 1em;
 }
@@ -168,8 +177,13 @@ img.favorite:hover {
 	padding: 3px;
 }
 
+.code{
+	font-size:11px;
+}
+
 .prot{
-	font-family: Georgia
+	font-family: Georgia;
+	color: #006699;
 }
 
 .bold{

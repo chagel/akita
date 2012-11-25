@@ -8,10 +8,14 @@ class Invite
 	field :activated_user_id, type: String
 	field :activated_at, type: Time
 
+	belongs_to :user
+
 	validates_uniqueness_of :code
 	validates_presence_of :code
 
 	after_save :update_user_state
+
+	scope :available, where(activated_user_id: nil, activated_at: nil)
 
 	private
 	def update_user_state

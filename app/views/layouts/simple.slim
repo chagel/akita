@@ -1,10 +1,12 @@
 doctype html
 html
-	= render :partial => 'layouts/head' 
-	body 
-		- flash.each do |name, msg|
-			- if msg.is_a?(String)
-			  = content_tag :div, :class => "alert-box #{name}" do
-			    = msg.html_safe
-			      
-		= yield
+  = render :partial => 'layouts/head' 
+  body 
+    - flash.each do |name, msg|
+      - if msg.is_a?(String)
+        = content_tag :div, :class => "alert-box #{name}" do
+          = msg.html_safe
+            
+    = yield
+
+    = render partial: 'layouts/foot'

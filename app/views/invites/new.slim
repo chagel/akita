@@ -1,21 +1,22 @@
 div.centerModal
 	= form_for Invite.new do |f|
-		div.five.columns.centered
-			div.panel.radius
-				h5.text-center
-					| Welcome, 
-					= link_to current_user.nickname, logout_path, method: :delete
-				p
-				div.row
-					div.two.columns
-						= f.label :code, 'Invitation Code', class: 'right inline'
-					div.ten.columns
-						= f.text_field :code, class: 'six'
+		div.row
+			div.six.columns.centered
+				div.panel.radius
+					h5.text-center
+						| Welcome, 
+						= link_to current_user.nickname, logout_path, method: :delete
+					p
+					div.row
+						div.three.columns
+							= f.label :code, 'Invite Code', class: 'right inline'
+						div.nine.columns
+							= f.text_field :code, class: 'code', value: params[:code]
 
-				div.row
-					div.two.columns 
-					div.three.columns 
-						= link_to 'No code yet?', apply_path, class: 'underline'
-					div.seven.columns
-						= f.submit 'Continue', class: 'radius button'
-						
+					div.row
+						div.three.columns 
+						div.five.columns 
+							= link_to 'No code yet?', apply_path, class: 'underline'
+						div.four.columns
+							= f.submit 'Continue', class: 'radius button right inline'
+							

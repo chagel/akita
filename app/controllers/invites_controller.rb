@@ -5,9 +5,9 @@ class InvitesController < ApplicationController
 
   def create
     begin
-      @invite = Invite.find_by(code: params[:invite]['code'], activated_user_id: nil)
+      @invite = Invite.available.find_by(code: params[:invite]['code'])
       @invite.update_attributes activated_user_id: current_user.id, activated_at: Time.now
-      redirect_to root_path, success: "Welcome! Akita project is still under development, please send feedback to <a href='mailto:chagel@gmail.com' class='white'>me</a> !"
+      redirect_to root_path, notice: "Welcome! In Akita we play with <a href='javascript:void(0)' class='gray shortcuts'>keyboard</a> !"
     rescue Mongoid::Errors::DocumentNotFound
       redirect_to :back, alert: 'Code is incorrect!'  
     end

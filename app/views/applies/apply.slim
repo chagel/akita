@@ -1,30 +1,32 @@
 div.centerModal
-	div.seven.columns.centered
-		div.panel.radius.gray-bg
-			h4 
-				small.prot They aren't coming, they're already there. - Reading 2.0
+	div.row
+		div.six.columns.centered
+			div.panel.radius
+				h4
+					small.prot They aren't coming, they're already there. - Reading 2.0
 
 	div.clear
-	div.seven.columns.centered
-		div.panel.radius
-			div.text-center
-				h4 Invited Access only
-				p
-			= form_for Apply.new, :url => {:action => :apply} do |f|
-				div.row
-					div.two.columns
-						= f.label :email, "Email", class: "right inline"
-					div.ten.columns
-						= f.text_field :email, class: 'five email text-left', placeholder: "", value: current_user && current_user.email
-				div.row
-					div.two.columns
-						= f.label :description, "Say sth.", class: "right inline"
-					div.ten.columns
-						= f.text_area :description, rows: 4, placeholder: "Try to impress me..", class: 'five'
-				div.row
-					div.two.columns
-					div.three.columns
-						= link_to 'Got code?', login_path, class: 'underline'
-					div.seven.columns
-						= f.submit :GO, class: 'radius button success'
-						
+	div.row
+		div.six.columns.centered
+			div.panel.radius
+				div.text-center
+					h4 Invited Access only
+					p
+				= form_for Apply.new, :url => {:action => :apply} do |f|
+					div.row
+						div.three.columns
+							= f.label :email, "Email", class: "right inline"
+						div.nine.columns
+							= f.text_field :email, class: 'email', placeholder: "", value: current_user && current_user.email
+					div.row
+						div.three.columns
+							= f.label :description, "Say Sth", class: "right inline"
+						div.nine.columns
+							= f.text_area :description, rows: 4, placeholder: "Try to impress me.."
+					div.row
+						div.three.columns
+						div.five.columns
+							= link_to 'Got code?', login_path, class: 'underline'
+						div.four.columns
+							= f.submit :GO, class: 'radius button success right inline'
+							

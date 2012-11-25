@@ -35,10 +35,12 @@ goto = (top, offset) ->
 	$('html, body').animate(scrollTop: top + offset, 200)
 
 next = (jump) ->
- 	startRow = $('div.links').find('div.active') || $('div.links div:first-child')
+ 	startRow = $('div.links').find('div.active')
  	if (row=$(startRow).next()).length
  		highlight row
  		goto row.offset().top, -10 if jump
+ 	else
+ 		first()
 	
 previous = (jump) ->
 	startRow = $('div.links').find 'div.active'
@@ -47,7 +49,7 @@ previous = (jump) ->
 		goto row.offset().top, -10 if jump
 
 first = ->
-	if (row = $('div.links div:first-child')).length
+	if (row = $('div.links div.link:first-child')).length
 		highlight row
 		goto row.offset().top, -10
 

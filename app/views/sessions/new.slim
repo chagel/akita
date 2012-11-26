@@ -23,8 +23,16 @@ div.centerModal
 					div.row
 						div.three.columns 
 						div.five.columns 
-							/ = f.label :remember_me, "Forget pwd?"
-							= link_to 'Sign in with Google account', user_omniauth_authorize_path(:google_oauth2), class: 'underline'
+							div.left
+								= f.check_box :remember_me, class: 'left inline'
+								= f.label :remember_me, "Remember Me!", class: 'left'
+							div.clear
+							
 						div.four.columns
 							= f.submit 'Login', class: 'radius button right inline'
+					div.row
+						div.three.columns
+						div.nine.columns
+							= link_to 'Sign in with Google account', user_omniauth_authorize_path(:google_oauth2), class: 'underline'
+
 							

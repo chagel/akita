@@ -2,11 +2,12 @@
 
 class LinksController < ApplicationController
 	before_filter :authenticate_user!
+	before_filter :find_link
 	layout 'simple', only: :create
 	def create
 		tag_names = params[:link].delete 'tags'
 		@link = current_user.links.build(params[:link])
-		tag_names.split(/[,|，]/).each do |name|
+		tag_names.split(/[,|，|\s]/).each do |name|
 			@link.tags << Tag.find_or_initialize_by(name: name.strip)
 		end
 		if !@link.save
@@ -28,5 +29,9 @@ class LinksController < ApplicationController
 		@link = Link.find params[:id]
 		@link.visit!
 		redirect_to @link.url
+	end
+
+	def destroy
+
 	end
 end

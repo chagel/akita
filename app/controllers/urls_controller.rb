@@ -12,9 +12,10 @@ class UrlsController < ApplicationController
 				  render :json => {"title" =>  title.content }.to_json and return
 				end
 			rescue Exception => ex
-				render :json => {"error" => "#{ex}"}.to_json
+				render :json => {"error" => "#{ex}"}.to_json and return
 			end
 		end
+		render :json => {"error" => "please check the url"}.to_json
 	end
 
 end

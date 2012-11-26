@@ -31,7 +31,7 @@ html
 
 				div.row
 					div.ten.columns
-						= f.text_field :tags, class: 'nine', value: nil, placeholder: 'tags (keywords seprated by comma)', value: params[:link] && params[:link]['tags']
+						= f.text_field :tags, class: 'nine', value: nil, placeholder: 'tags (keywords seprated by comma or space)', value: params[:link] && params[:link]['tags']
 
 				div.row
 					div.ten.columns

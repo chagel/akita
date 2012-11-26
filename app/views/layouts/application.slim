@@ -31,6 +31,8 @@ html
             li.link_new
               = link_to "new", 'javascript:void(0);' 
             li.divider
+            li
+              = link_to "logout", logout_path, method: :delete
           - if (num_of_invites = current_user.invites.available.count) > 0
             div
               a.invite href='javascript:void(0);'

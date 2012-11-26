@@ -26,12 +26,17 @@ class LinksController < ApplicationController
 	end
 
 	def show
-		@link = Link.find params[:id]
 		@link.visit!
 		redirect_to @link.url
 	end
 
 	def destroy
+		current_user.links.find(params[:id]).destroy
+		redirect_to :back, notice: 'Link has been removed permanently.'
+	end
 
+	private 
+	def find_link
+		@link = Link.find(params[:id]) if params[:id]
 	end
 end

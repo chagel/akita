@@ -5,8 +5,11 @@ div.links
 					= link_to link.title, link, title: link.description, target: 'blank'
 
 				div.action.hide.right.mr1
-
-					= link_to image_tag(current_user.favorites.where(link_id: link.id).present? ? 'fav_golden.png' : 'fav_blank.png', class: 'favorite'), favorites_path(id: link.id), method: :post, remote: true
+					span.ml1
+						= link_to image_tag(current_user.favorites.where(link_id: link.id).present? ? 'fav_golden.png' : 'fav_blank.png', class: 'favorite'), favorites_path(id: link.id), method: :post, remote: true, title: 'Favorite'
+					- if link.user == current_user
+						span.ml1
+							= link_to image_tag('icon-delete.png'), link_path(link), method: :delete, title: 'Delete', class: 'delete', confirm: 'Are you sure to continue?'
 
 				div.clear
 				

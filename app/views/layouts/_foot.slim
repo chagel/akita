@@ -9,8 +9,18 @@ footer.row
           li
             = link_to 'bookmarklet', "javascript:(function(){u=document.location.href;t=document.title; s=window.getSelection();void(window.open('#{APP_URL}/links/new?link[title]='+encodeURIComponent(t)+'&link[description]='+encodeURIComponent(s)+'&link[url]='+encodeURIComponent(u),'_blank','width=600,height=380,left=300,top=200,status=no,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no')); })();"
           li
-            = link_to "keyboard", '#shortcus', onclick: "Mousetrap.trigger('shift+/');"
+            = link_to "keyboard", 'javascript:void(0)', class: 'shortcuts'
           li
             = link_to "github", 'https://github.com/chagel/akita', target: '_blank'
           li
             = link_to "donate", '#'
+            
+javascript:
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36543246-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();

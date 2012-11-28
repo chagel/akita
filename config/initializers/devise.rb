@@ -208,10 +208,10 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
 
   # production
-  # config.omniauth :google_oauth2, "837164723866.apps.googleusercontent.com", "WCEAlRpsL1aH8H_Cz_Z3pmdg", {access_type: 'online', approval_prompt: ''}
+  config.omniauth :google_oauth2, "837164723866.apps.googleusercontent.com", "WCEAlRpsL1aH8H_Cz_Z3pmdg", {access_type: 'online', approval_prompt: ''}
 
   # development
-  config.omniauth :google_oauth2, "837164723866-j3spndgled34ro467tsth54r2t8s84fi.apps.googleusercontent.com", "SkLbOfCep7msYzfaJwtwa_im", {access_type: 'online', approval_prompt: ''}
+  # config.omniauth :google_oauth2, "837164723866-j3spndgled34ro467tsth54r2t8s84fi.apps.googleusercontent.com", "SkLbOfCep7msYzfaJwtwa_im", {access_type: 'online', approval_prompt: ''}
   
 
   # ==> Warden configuration

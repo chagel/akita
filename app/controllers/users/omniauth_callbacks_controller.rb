@@ -7,7 +7,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     begin
       if existed_auth.present?
         user = existed_auth.user
-      elsif User.where(email: email).present?
+      elsif User.where(email: email).exists?
         # TODO: oauth2 bind to email account
         redirect_to login_url, alert: "Email address [#{email}] has been registered already." and return
       else

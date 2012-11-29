@@ -62,6 +62,11 @@ Akita::Application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.default_url_options = { :host => 'weed30.com' }
+
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Akita-500] ",
+    :sender_address => "\"weed30.com\" <no-reply@weed30.com>",
+    :exception_recipients => %w{chagel@gmail.com}
 end
 
 APP_URL = "http://weed30.com"

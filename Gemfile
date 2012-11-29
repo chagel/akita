@@ -24,6 +24,7 @@ gem 'kaminari'
 gem 'slim'
 gem 'nokogiri'
 gem 'rails_admin'
+gem 'exception_notification'
 
 
 group :development do

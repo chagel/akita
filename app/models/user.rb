@@ -47,6 +47,8 @@ class User
   field :nickname, type: String
   field :state, type:String, :default => 'pending'
 
+  index({email: 1}, {unique: true})
+
   has_many :authentications, class_name: 'Authentication'
   has_many :links
   has_many :invites

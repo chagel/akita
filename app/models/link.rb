@@ -11,6 +11,8 @@ class Link
 	
 	field :user_nickname, type: String
 
+	index favorites: 1
+
 	belongs_to :user
 	has_one :link_stats, class_name: 'LinkStats', dependent: :destroy
 	has_and_belongs_to_many :tags

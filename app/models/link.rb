@@ -8,6 +8,8 @@ class Link
 	field :url, type: String
 	field :description, type: String
 
+	field :user_nickname, type: String
+
 	belongs_to :user
 	has_one :link_stats, class_name: 'LinkStats', dependent: :destroy
 	has_many :favorites, dependent: :destroy
@@ -18,6 +20,7 @@ class Link
 	validates_format_of :url, :with => URI::regexp(%w(http https))
 
 	after_save :update_tags_count
+	before_create :assign_extra
 
 	def domain
 		self.url.match /(\w*\.[a-z.0-9-]*)/
@@ -36,6 +39,10 @@ class Link
 		self.tags.each do |tag|
 			tag.update_count 
 		end
+	end
+
+	def assign_extra
+		self.user_nickname = User.find(self.user_id).nickname
 	end
 
 end

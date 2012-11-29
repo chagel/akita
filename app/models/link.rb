@@ -8,6 +8,8 @@ class Link
 	field :url, type: String
 	field :description, type: String
 	field :favorites, type: Array
+	field :tag_names, type: String
+	field :tags, type: Array
 	
 	field :user_nickname, type: String
 
@@ -15,14 +17,14 @@ class Link
 
 	belongs_to :user
 	has_one :link_stats, class_name: 'LinkStats', dependent: :destroy
-	has_and_belongs_to_many :tags
 
 	validates_presence_of :title, :url
 	validates_uniqueness_of :url
 	validates_format_of :url, :with => URI::regexp(%w(http https))
 
 	after_save :update_tags_count
-	before_create :assign_extra
+	before_create :assign_user_nickname
+	before_save :find_or_create_tags
 
 	def domain
 		self.url.match /(\w*\.[a-z.0-9-]*)/
@@ -39,11 +41,18 @@ class Link
 	private
 	def update_tags_count
 		self.tags.each do |tag|
-			tag.update_count 
-		end
+			Tag.find(tag[:id]).refresh_link_count if tag && tag[:id]
+		end if self.tags.present?
 	end
 
-	def assign_extra
+	def find_or_create_tags
+		self.tag_names.split(/[,|，|\s]/).each do |name|
+			tag = Tag.find_or_create_by(name: name.strip)
+			self.add_to_set :tags, {id: tag.id, slug: tag.slug, name: tag.name}
+		end if self.tag_names.present? && self.tag_names_changed?
+	end
+
+	def assign_user_nickname
 		self.user_nickname = User.find(self.user_id).nickname
 	end
 

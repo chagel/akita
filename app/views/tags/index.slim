@@ -1,0 +1,16 @@
+ul.breadcrumbs
+	li
+		= link_to 'home', root_path
+	li.current
+		span tags
+
+ul.tags
+	- @tags.each do |tag|
+		li.tag-big.left
+			= link_to "#{tag.name}".html_safe, tag_slug_path(tag.slug)
+
+div.clear
+
+div.pager
+	= paginate @tags
+

@@ -1,0 +1,11 @@
+ul.breadcrumbs
+	li
+		= link_to 'home', root_path
+	li
+		= link_to 'tags', tags_path
+	li.current
+		span
+			= @tag.name
+		
+= render partial: 'pages/list'
+

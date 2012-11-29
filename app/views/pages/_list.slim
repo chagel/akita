@@ -24,10 +24,10 @@ div.links
 					span |
 					span.pd1
 						= link_to link.user_nickname, '#'
-					- unless link.tags.empty?
+					- unless link.tags.blank?
 						span.ml1
 							- link.tags.each do |tag|
-								= link_to tag.name, '#', class: 'tag'
+								= link_to tag['name'], tag_slug_path(slug: tag['slug']), class: 'tag'
 
 div	
 	= paginate @links

@@ -5,18 +5,18 @@ class Tag
 	field :slug, type: String
 	field :links_count, type: Integer
 
-	has_and_belongs_to_many :links
+	index slug: 1
 
 	before_create :generate_slug
 
-	def update_count
-		update_attribute :links_count, self.links.count
+	def refresh_link_count
+		self.update_attributes links_count: Link.where("tags.id" => self.id).count
 	end
 
 	private
 	def generate_slug
 		#strip the string
-    ret = self.name.strip
+    ret = self.name.strip.downcase
 
     #blow away apostrophes
     ret.gsub! /['`]/,""
@@ -26,8 +26,8 @@ class Tag
     ret.gsub! /\s*@\s*/, " at "
     ret.gsub! /\s*&\s*/, " and "
 
-    #replace all non alphanumeric, underscore or periods with slash
-		ret.gsub! /\s*[^A-Za-z0-9\.]\s*/, '-'  
+    #replace all non alphanumeric, chineses, underscore or periods with slash
+		ret.gsub! /\s*[^A-Za-z0-9\.\u4e00-\u9fa5]\s*/, '-'  
 
 		#convert double slashs to single
 		ret.gsub! /-+/,"-"

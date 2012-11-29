@@ -5,12 +5,7 @@ class LinksController < ApplicationController
 	before_filter :find_link
 	layout 'simple', only: :create
 	def create
-		tag_names = params[:link].delete 'tags'
-		@link = current_user.links.build(params[:link])
-		tag_names.split(/[,|，|\s]/).each do |name|
-			@link.tags << Tag.find_or_initialize_by(name: name.strip)
-		end
-		if !@link.save
+		if !current_user.links.create(params[:link])
 			redirect_to :back, alert: "Link save error: #{@link.errors.full_messages}" 
 		elsif params[:link]['render'] == 'modal'
 			redirect_to links_path

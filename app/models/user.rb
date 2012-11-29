@@ -49,7 +49,6 @@ class User
 
   has_many :authentications, class_name: 'Authentication'
   has_many :links
-  has_many :favorites
   has_many :invites
 
   def self.create_with_omniauth(auth)

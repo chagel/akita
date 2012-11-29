@@ -6,7 +6,7 @@ div.links
 
 				div.action.hide.right.mr1
 					span.ml1
-						= link_to image_tag(current_user.favorites.where(link_id: link.id).present? ? 'fav_golden.png' : 'fav_blank.png', class: 'favorite'), favorites_path(id: link.id), method: :post, remote: true, title: 'Favorite'
+						= link_to image_tag((link.favorites && link.favorites.include?(current_user.id)) ? 'fav_golden.png' : 'fav_blank.png', class: 'favorite'), favorites_path(id: link.id), method: :post, remote: true, title: 'Favorite'
 					- if link.user_id == current_user.id
 						span.ml1
 							= link_to image_tag('icon-delete.png'), link_path(link), method: :delete, title: 'Delete', class: 'delete', confirm: 'Are you sure to continue?'

@@ -2,21 +2,22 @@ class FavoritesController < ApplicationController
 	before_filter :authenticate_user!
 	
 	def index
-		@links = Kaminari.paginate_array(current_user.favorites.order_by('id desc').map(&:link)).page(params[:page])
+		@links = Link.where(:favorites.in => [current_user.id]).order_by('id desc').page(params[:page])
 	end
 
 	def create
 		unless params[:id]
 			render :json => {:error => 'params is missing' }.to_json
 		else
-			favs = current_user.favorites.where(link_id: params[:id])
-			if favs.present?
-				favs.destroy_all
-				action = :destroy
-			else
-				current_user.favorites.create(link_id: params[:id]) 
+			link = Link.find params[:id]
+			if link.favorites.blank? || !link.favorites.include?(current_user.id)
+				link.add_to_set :favorites, current_user.id
 				action = :create
+			else
+				link.favorites.delete current_user.id
+				action = :destroy
 			end
+			link.save
 			render :json => {:action => action }.to_json
 		end
 	end

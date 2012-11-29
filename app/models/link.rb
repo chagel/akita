@@ -7,12 +7,12 @@ class Link
 	field :title, type: String
 	field :url, type: String
 	field :description, type: String
-
+	field :favorites, type: Array
+	
 	field :user_nickname, type: String
 
 	belongs_to :user
 	has_one :link_stats, class_name: 'LinkStats', dependent: :destroy
-	has_many :favorites, dependent: :destroy
 	has_and_belongs_to_many :tags
 
 	validates_presence_of :title, :url

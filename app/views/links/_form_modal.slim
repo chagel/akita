@@ -1,0 +1,30 @@
+= f.hidden_field :render, value: :modal
+div.row
+	div.two.columns
+		= f.label :url, class: "right inline"
+	div.ten.columns
+		= f.text_field :url, class: 'eleven left'
+		= image_tag 'loading.gif', id: 'url_loading', class: 'left hide', width: 16
+
+div.row
+	div.two.columns
+		= f.label :title, class: "right inline"
+	div.ten.columns
+		= f.text_field :title, class: 'eleven'
+
+div.row
+	div.two.columns
+		= f.label :tag_names, 'Tags', class: "right inline"
+	div.ten.columns
+		= f.text_field :tag_names, class: 'eleven', placeholder: 'keywords seprated by comma or space'
+
+div.row
+	div.two.columns
+		= f.label :description, class: "right inline"
+	div.ten.columns
+		= f.text_area :description, class: 'eleven', rows: 5
+
+div.row
+	div.two.columns
+	div.ten.columns
+		= f.submit :Submit, class: 'radius button'

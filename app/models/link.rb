@@ -47,10 +47,13 @@ class Link
 	end
 
 	def find_or_create_tags
-		self.tag_names.split(/[,|，|\s]/).each do |name|
-			tag = Tag.find_or_create_by(name: name.strip)
-			self.add_to_set :tags, {id: tag.id, slug: tag.slug, name: tag.name}
-		end if self.tag_names.present? && self.tag_names_changed?
+		if self.tag_names.present? && self.tag_names_changed?
+			self.tags = []
+			self.tag_names.split(/[,|，|\s]/).each do |name|
+				tag = Tag.find_or_create_by(name: name.strip)
+				self.tags << {id: tag.id, slug: tag.slug, name: tag.name}
+			end 
+		end
 	end
 
 	def assign_user_nickname

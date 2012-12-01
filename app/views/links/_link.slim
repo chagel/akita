@@ -1,0 +1,30 @@
+div.link data-link-id=[link.id] 
+	div.left.title
+		= link_to link.title, link, title: link.description, target: 'blank', class: 'ext'
+
+	div.action.hide.right.mr1
+		span.ml1
+			= link_to image_tag((link.favorites && link.favorites.include?(current_user.id)) ? 'fav_golden.png' : 'fav_blank.png', class: 'favorite'), favorites_path(id: link.id), method: :post, remote: true, title: 'Favorite'
+		- if link.user_id == current_user.id
+			span.ml1
+				= link_to image_tag('icon-edit.png'), edit_link_path(link), remote: true
+			span.ml1
+				= link_to image_tag('icon-delete.png'), link_path(link), method: :delete, title: 'Delete', class: 'delete', confirm: 'Are you sure to continue?'
+
+	div.clear
+	
+	div.subtitle
+		span.pr1
+			= beauty_time link.created_at
+
+		span |
+		span.pd1
+			= link.domain
+
+		span |
+		span.pd1
+			= link_to link.user_nickname, '#'
+		- unless link.tags.blank?
+			span.ml1
+				- link.tags.each do |tag|
+					= link_to tag[:name]||tag['name'], tag_slug_path(slug: tag[:slug]||tag['slug']), class: 'tag'

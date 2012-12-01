@@ -1,34 +1,5 @@
 div#new_link.reveal-modal.large
 	a.close-reveal-modal &#215;
-	= form_for Link.new do |f|
-		= f.hidden_field :render, value: :modal
-		div.row
-			div.two.columns
-				= f.label :url, class: "right inline"
-			div.ten.columns
-				= f.text_field :url, class: 'eleven left'
-				= image_tag 'loading.gif', id: 'url_loading', class: 'left hide', width: 16
-
-		div.row
-			div.two.columns
-				= f.label :title, class: "right inline"
-			div.ten.columns
-				= f.text_field :title, class: 'eleven'
-
-		div.row
-			div.two.columns
-				= f.label :tag_names, 'Tags', class: "right inline"
-			div.ten.columns
-				= f.text_field :tag_names, class: 'eleven', value: nil, placeholder: 'keywords seprated by comma or space'
-
-		div.row
-			div.two.columns
-				= f.label :description, class: "right inline"
-			div.ten.columns
-				= f.text_area :description, class: 'eleven', rows: 5
-
-		div.row
-			div.two.columns
-			div.ten.columns
-				= f.submit :Submit, class: 'radius button'
+	= form_for (@link || Link.new) do |f|
+		= render partial: 'links/form_modal', locals: {f: f}
 

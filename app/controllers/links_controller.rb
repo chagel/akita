@@ -4,6 +4,7 @@ class LinksController < ApplicationController
 	before_filter :authenticate_user!
 	before_filter :find_link
 	layout 'simple', only: :create
+
 	def create
 		if !current_user.links.create(params[:link])
 			redirect_to :back, alert: "Link save error: #{@link.errors.full_messages}" 
@@ -17,12 +18,22 @@ class LinksController < ApplicationController
 	end
 
 	def new
+		@link = Link.new(params[:link])
 		render layout: nil
 	end
 
 	def show
 		@link.visit!
 		redirect_to @link.url
+	end
+
+	def edit
+		render layout: nil
+	end
+
+	def update
+		@link.update_attributes params[:link]
+		render layout: nil
 	end
 
 	def destroy

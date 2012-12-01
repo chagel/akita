@@ -7,14 +7,9 @@ div.centerModal
 				p 窗口1秒后自动关闭..
 
 javascript:
-	$(function(){
+	window.onload = function(){
 		window.setTimeout(function(){
-			if(window.opener != null){
-				window.opener.close();
-			}
-			else{
-				window.close();
-			}
+			window.close();
 		}, 1000);
-	})
+	}
 	

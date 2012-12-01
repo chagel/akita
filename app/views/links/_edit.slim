@@ -1,0 +1,4 @@
+div#edit_link.reveal-modal.large
+	a.close-reveal-modal &#215;
+	= form_for @link, remote: true do |f|
+		= render partial: 'links/form_modal', locals: {f: f}

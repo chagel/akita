@@ -23,7 +23,7 @@ $('li.link_new').live 'click', ->
 	links_new()
 
 # highlight item
-$('div.links div.link').live 'mouseenter', -> 
+$('div.links div.link').live 'mouseenter click tap', -> 
 	highlight this
 
 normalize = (row) ->

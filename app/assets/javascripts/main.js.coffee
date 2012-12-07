@@ -30,6 +30,18 @@ normalize = (row) ->
 	$(row).removeClass 'active'
 	$(row).find('div.action').addClass 'hide'
 
+#lists - add more links
+$('a.action_add_urls').live "click tap",  ->
+	for [1..3]
+		$('div.more_urls').append("<input type='text' name='list[urls][]' class='eleven' placeholder='http://' />")
+
+#list - action footer toggle
+$('div.list').live 'mouseenter', ->
+	$(this).find('.footer').removeClass 'invisiable'
+
+$('div.list').live 'mouseleave', ->
+	$(this).find('.footer').addClass 'invisiable'
+
 # shortcuts functions
 highlight = (row) ->
 	normalize @highlighted_row if @highlighted_row
@@ -67,27 +79,35 @@ lists_new = ->
 	$('#new_link').reveal()
 	$('dd.listtab a').click()
 
+loop_link = (current, targets, step) ->
+	for link, index in targets
+		if current == link && targets.length > (index+step) > -1
+			window.parent.location.replace(targets[index+step])
+			return false
+
+fore_or_backward = (step) ->
+	current_link = window.location.pathname
+	current_link = '/home/links' if current_link == '/'
+	console.log current_link
+	targets1 = ['/home/links', '/home/lists']
+	targets2 = ['/links', '/lists', '/favorites']
+	loop_link(current_link, targets1, step)
+	loop_link(current_link, targets2, step)
+
 open_shortcuts = ->
 	$('#help').reveal()
 
-$('a.action_add_urls').live "click tap",  ->
-	for [1..3]
-		$('div.more_urls').append("<input type='text' name='list[urls][]' class='eleven' placeholder='http://' />")
-
-$('div.list').live 'mouseenter', ->
-	$(this).find('.footer').removeClass 'invisiable'
-
-$('div.list').live 'mouseleave', ->
-	$(this).find('.footer').addClass 'invisiable'
-
 # keyboard shortcut bindings
 Mousetrap.bind 'shift+/', (e) -> open_shortcuts()
+Mousetrap.bind ']', (e) -> fore_or_backward(1)
+Mousetrap.bind '[', (e) -> fore_or_backward(-1)
 Mousetrap.bind 'n', (e) -> links_new()
 Mousetrap.bind 'shift+n', (e) -> lists_new()
 Mousetrap.bind 'u', (e) -> window.history.back()
 Mousetrap.bind 'g h', (e) -> window.parent.location.replace('/')
 Mousetrap.bind 'g t', (e) -> window.parent.location.replace('/tags')
 Mousetrap.bind 'g l', (e) -> window.parent.location.replace('/links')
+Mousetrap.bind 'g s', (e) -> window.parent.location.replace('/lists')
 Mousetrap.bind 'g f',  (e) -> window.parent.location.replace('/favorites')
 Mousetrap.bind 'j', (e) -> next(true) 
 Mousetrap.bind 'k', (e) -> previous(true) 

@@ -61,7 +61,11 @@ first = ->
 
 links_new = ->
 	$("#new_link").reveal()
-	# $('form #link_url').focus()
+	$('dd.linktab a').click()
+
+lists_new = ->
+	$('#new_link').reveal()
+	$('dd.listtab a').click()
 
 open_shortcuts = ->
 	$('#help').reveal()
@@ -79,6 +83,7 @@ $('div.list').live 'mouseleave', ->
 # keyboard shortcut bindings
 Mousetrap.bind 'shift+/', (e) -> open_shortcuts()
 Mousetrap.bind 'n', (e) -> links_new()
+Mousetrap.bind 'shift+n', (e) -> lists_new()
 Mousetrap.bind 'u', (e) -> window.history.back()
 Mousetrap.bind 'g h', (e) -> window.parent.location.replace('/')
 Mousetrap.bind 'g t', (e) -> window.parent.location.replace('/tags')

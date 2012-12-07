@@ -1,9 +1,10 @@
-ul.breadcrumbs
-	li
-		= link_to 'home', root_path
-	li.current
-		span lists
+/ ul.breadcrumbs
+/ 	li
+/ 		= link_to 'home', root_path
+/ 	li.current
+/ 		span lists
 
+= render partial: 'pages/my_bar'
 
 div.lists
 	= render @lists

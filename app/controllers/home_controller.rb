@@ -3,6 +3,7 @@ class HomeController < ApplicationController
 
 	def index
 		@links = Link.order_by('id desc').page(params[:page])
+		@lists = List.order_by('id desc').page(params[:page])
 	end
 
 	private

@@ -1,0 +1,7 @@
+dl.tabs
+	dd class="#{request.path =~ /\/links/ ? 'active' : ''}"
+		= link_to 'links', links_path
+	dd class="#{request.path =~ /\/lists/ ? 'active' : ''}"
+		= link_to 'lists', lists_path
+	dd class="#{request.path =~ /\/favorites/ ? 'active' : ''}"
+		= link_to 'favorites', favorites_path

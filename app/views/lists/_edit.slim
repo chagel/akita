@@ -1,0 +1,4 @@
+div#edit_list.reveal-modal.large
+	a.close-reveal-modal &#215;
+	= form_for @list, remote: true do |f|
+		= render partial: 'lists/form', locals: {f: f}

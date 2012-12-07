@@ -66,6 +66,16 @@ links_new = ->
 open_shortcuts = ->
 	$('#help').reveal()
 
+$('a.action_add_urls').live "click tap",  ->
+	for [1..3]
+		$('div.more_urls').append("<input type='text' name='list[urls][]' class='eleven' placeholder='http://' />")
+
+$('div.list').live 'mouseenter', ->
+	$(this).find('.footer').removeClass 'invisiable'
+
+$('div.list').live 'mouseleave', ->
+	$(this).find('.footer').addClass 'invisiable'
+
 # keyboard shortcut bindings
 Mousetrap.bind 'shift+/', (e) -> open_shortcuts()
 Mousetrap.bind 'n', (e) -> links_new()

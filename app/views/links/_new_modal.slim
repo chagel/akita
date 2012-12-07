@@ -1,5 +1,16 @@
 div#new_link.reveal-modal.large
 	a.close-reveal-modal &#215;
-	= form_for (@link || Link.new) do |f|
-		= render partial: 'links/form_modal', locals: {f: f}
 
+	dl.tabs
+		dd.active
+			a href="#link" Link
+		dd
+			a href="#list" List
+
+	ul.tabs-content
+		li.active#linkTab
+			= form_for (@link || Link.new) do |f|
+				= render partial: 'links/form_modal', locals: {f: f}
+		li#listTab
+			= form_for (@list ||= List.new) do |f|
+				= render partial: 'lists/form', locals: {f: f}	

@@ -1,0 +1,12 @@
+ul.breadcrumbs
+	li
+		= link_to 'home', root_path
+	li.current
+		span lists
+
+
+div.lists
+	= render @lists
+
+div	
+	= paginate @lists

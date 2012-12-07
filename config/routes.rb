@@ -31,6 +31,8 @@ Akita::Application.routes.draw do
 	match 'tags/:slug', controller: 'tags', action: 'show', as: :tag_slug
 	resources :tags
 
+	resources :lists
+
 	match :apply, controller: 'applies'
 
 	resources :home do 

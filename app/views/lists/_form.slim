@@ -1,0 +1,32 @@
+div.row
+	div.two.columns
+		= f.label :title, class: "right inline"
+	div.ten.columns
+		= f.text_field :title, class: 'eleven'
+
+div.row
+	div.two.columns
+		= f.label :tag_names, 'Tags', class: "right inline"
+	div.ten.columns
+		= f.text_field :tag_names, class: 'eleven', placeholder: 'keywords seprated by comma or space'
+
+div.row
+	div.two.columns
+		= f.label :urls, 'Urls', class: "right inline"
+	div.ten.columns.more_urls
+		p.gray You can input multiple urls below
+
+		- @list.urls.each_with_index do |url, index|
+			= f.text_field :urls, name: "list[urls][]", class: 'eleven', value: url, placeholder: 'http://'
+
+div.row
+	div.two.columns
+	div.ten.columns
+		a.action_add_urls href="javascript:void(0)" Add more...
+
+p
+
+div.row
+	div.two.columns
+	div.ten.columns
+		= f.submit :Submit, class: 'radius button'

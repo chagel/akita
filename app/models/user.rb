@@ -52,6 +52,7 @@ class User
   has_many :authentications, class_name: 'Authentication'
   has_many :links
   has_many :invites
+  has_many :lists
 
   def self.create_with_omniauth(auth)
 	  create do |user|

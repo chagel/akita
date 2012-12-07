@@ -1,47 +1,34 @@
 #encoding: utf-8
 require 'digest'
 
-class Link
+class List
 	include Mongoid::Document
 	include Mongoid::Timestamps
 	field :title, type: String
-	field :url, type: String
-	field :description, type: String
-	field :favorites, type: Array
+	field :urls, type: Array, default: Array.new(3)
 	field :tag_names, type: String
-	field :tags, type: Array
+	field :tags, type: Array	
 	field :user_nickname, type: String
 
-	index favorites: 1
 	index tags: 1
 
 	belongs_to :user
-	has_one :link_stats, class_name: 'LinkStats', dependent: :destroy
 
-	validates_presence_of :title, :url
-	validates_uniqueness_of :url
-	validates_format_of :url, :with => URI::regexp(%w(http https))
+	validates_presence_of :title
 
 	after_save :update_tags_count
 	before_create :assign_user_nickname
 	before_save :find_or_create_tags
+	before_save :reject_blank_urls
 
-	def domain
-		self.url.match /(\w*\.[a-z.0-9-]*)/
-	end
-
-	def visit!
-		LinkStats.find_or_create_by(link_id: self.id).inc :clicks, 1
-	end
-
-	def vote!
-		LinkStats.find_or_create_by(link_id: self.id).inc :votes, 1
+	def self.domain(fullurl)
+		fullurl.match /(\w*\.[a-z.0-9-]*)/ if fullurl.is_a? String
 	end
 
 	private
 	def update_tags_count
 		self.tags.each do |tag|
-			Tag.find(tag[:id]).refresh_links_count if tag && tag[:id]
+			Tag.find(tag[:id]).refresh_sets_count if tag && tag[:id]
 		end if self.tags.present?
 	end
 
@@ -57,6 +44,10 @@ class Link
 
 	def assign_user_nickname
 		self.user_nickname = User.find(self.user_id).nickname
+	end
+
+	def reject_blank_urls
+		self.urls.delete_if {|url| url.blank? }
 	end
 
 end

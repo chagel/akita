@@ -4,13 +4,18 @@ class Tag
 	field :name, type: String
 	field :slug, type: String
 	field :links_count, type: Integer
+	field :lists_count, type: Integer
 
 	index slug: 1
 
 	before_create :generate_slug
 
-	def refresh_link_count
+	def refresh_links_count
 		self.update_attributes links_count: Link.where("tags.id" => self.id).count
+	end
+
+	def refresh_sets_count
+		self.update_attributes lists_count: List.where("tags.id" => self.id).count
 	end
 
 	private

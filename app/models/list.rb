@@ -15,6 +15,7 @@ class List
 	belongs_to :user
 
 	validates_presence_of :title
+	before_validation :verify_urls
 
 	after_save :update_tags_count
 	before_create :assign_user_nickname
@@ -48,6 +49,13 @@ class List
 
 	def reject_blank_urls
 		self.urls.delete_if {|url| url.blank? }
+	end
+
+	def verify_urls
+		self.errors.add :urls, 'must have one url at least' if self.urls.blank?
+		self.urls.each do |url|
+			self.errors.add :urls, 'url is invalid' if !url.match(/^(http|https):/) && url.present?
+		end
 	end
 
 end

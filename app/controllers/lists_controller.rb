@@ -7,7 +7,11 @@ class ListsController < ApplicationController
 
 	def create
 		@list = current_user.lists.create(params[:list])
-		redirect_to lists_path
+		if @list.errors.blank?
+			redirect_to lists_path
+		else
+			redirect_to lists_path, alert: "List save error: #{@list.errors.full_messages.to_s}"
+		end
 	end
 
 	def index

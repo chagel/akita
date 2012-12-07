@@ -22,11 +22,11 @@ html
           div.clear
           ul.side-nav
             li.divider
-            li
+            li class="#{controller_name == 'home' ? 'active' : ''}"
               = link_to "home", root_path
-            li
+            li class="#{controller_name == 'tags' ? 'active' : ''}"
               = link_to "tags", tags_path
-            li
+            li class="#{['lists', 'links', 'favorites'].include?(controller_name) ? 'active' : ''}"
               = link_to "mine", links_path
             li.link_new
               = link_to "new", 'javascript:void(0);' 

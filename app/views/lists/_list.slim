@@ -1,19 +1,26 @@
 div.list data-list-id=[list.id] 
 	h6
 		= list.title
-	- unless list.tags.blank?
 		div.mt1
-			span.mr1
-				- list.tags.each do |tag|
-					= link_to tag[:name]||tag['name'], '#', class: 'tag'
+			- unless list.tags.blank?
+				span.mr1
+					- list.tags.each do |tag|
+						= link_to tag[:name]||tag['name'], '#', class: 'tag'
 	ol.mt1
 		- list.urls.each do |url|
 			li 
 				= link_to List.domain(url), url 
-	
+
+	div.subtitle.mt1.left
+		span.pr1
+			= link_to list.user_nickname, '#'
+		span.pr1
+			= beauty_time list.created_at
+
 	div.right.footer.invisiable
 		- if list.user_id == current_user.id
 			span.ml1
 				= link_to image_tag('icon-edit.png'), edit_list_path(list), remote: true, class: 'edit'
 			span.ml1
 				= link_to image_tag('icon-delete.png'), list_path(list), method: :delete, title: 'Delete', class: 'delete', confirm: 'Are you sure to continue?'
+	div.clear

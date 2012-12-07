@@ -1,9 +1,12 @@
 class HomeController < ApplicationController
 	before_filter :redirect_apply
 
-	def index
-		@links = Link.order_by('id desc').page(params[:page])
+	def lists
 		@lists = List.order_by('id desc').page(params[:page])
+	end
+
+	def links
+		@links = Link.order_by('id desc').page(params[:page])
 	end
 
 	private

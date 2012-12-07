@@ -36,7 +36,12 @@ Akita::Application.routes.draw do
 	match :apply, controller: 'applies'
 
 	resources :home do 
-		get 'page/:page', :action => :index, :on => :collection	  
+		get 'page/:page', :action => :index, :on => :collection
+		collection do 
+			match :links
+			match :lists
+		end
 	end
-  root :to  => 'home#index'
+
+  root :to  => 'home#links'
 end

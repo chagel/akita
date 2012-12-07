@@ -6,8 +6,9 @@ class LinksController < ApplicationController
 	layout 'simple', only: :create
 
 	def create
-		if !current_user.links.create(params[:link])
-			redirect_to :back, alert: "Link save error: #{@link.errors.full_messages}" 
+		@link = current_user.links.create(params[:link]) 
+		if !@link.errors.blank?
+			redirect_to :back, alert: "Link save error: #{@link.errors.full_messages.to_s}" 
 		elsif params[:link]['render'] == 'modal'
 			redirect_to links_path
 		end

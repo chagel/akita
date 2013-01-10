@@ -1,32 +1,20 @@
 div.centerModal
-	div.row
-		div.six.columns.centered
-			div.panel.radius
-				h4
-					small.prot They aren't coming, they're already there. - Reading 2.0
 
-	div.clear
 	div.row
 		div.six.columns.centered
 			div.panel.radius
 				div.text-center
-					h4 Invited Access only
-					p
+					h4 VIP Access Only
+					br
 				= form_for Apply.new, :url => {:action => :apply} do |f|
 					div.row
-						div.three.columns
+						div.two.columns
 							= f.label :email, "Email", class: "right inline"
-						div.nine.columns
+						div.eight.columns
 							= f.text_field :email, class: 'email', placeholder: "", value: current_user && current_user.email
+						div.two.columns
+							= f.submit 'Go', class: 'radius button success inline'
 					div.row
-						div.three.columns
-							= f.label :description, "Say Sth", class: "right inline"
-						div.nine.columns
-							= f.text_area :description, rows: 4, placeholder: "Try to impress me.."
-					div.row
-						div.three.columns
-						div.five.columns
-							= link_to 'Got code?', login_path, class: 'underline'
-						div.four.columns
-							= f.submit :GO, class: 'radius button success right inline'
-							
+						p.text-center
+							= link_to 'Existing user?', login_path, class: 'underline bold '
+						

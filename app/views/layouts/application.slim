@@ -27,7 +27,7 @@ html
             li class="#{controller_name == 'tags' ? 'active' : ''}"
               = link_to "tags", tags_path
             li class="#{['lists', 'links', 'favorites'].include?(controller_name) ? 'active' : ''}"
-              = link_to "mine", links_path
+              = link_to "my", links_path
             li.link_new
               = link_to "new", 'javascript:void(0);' 
             li.divider

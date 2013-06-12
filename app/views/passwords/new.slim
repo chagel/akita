@@ -1,0 +1,20 @@
+div.centerModal
+	div.row
+		= form_for resource, :as => resource_name, :url => user_password_path do |f|
+			= devise_error_messages!
+			div.six.columns.centered
+				div.panel.radius
+					div.row
+						div.three.columns
+							= f.label :email, 'Email', class: 'inline'
+						div.nine.columns
+							= f.text_field :email, class: 'email'
+						
+					div.row
+						div.three.columns 
+							= link_to "Back", "javascript: history.back();", class: 'underline inline'
+						div.three.columns 
+							
+						div.six.columns 
+							= f.submit 'Send', class: 'button radius inline right'
+							

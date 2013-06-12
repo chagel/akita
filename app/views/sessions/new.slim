@@ -32,6 +32,7 @@ div.centerModal
 							= f.submit 'Login', class: 'radius button right inline'
 					div.row
 						div.three.columns
+							= link_to "Forget pwd?", new_user_password_path
 						div.nine.columns
 							= link_to 'Sign in with Google account', user_omniauth_authorize_path(:google_oauth2), class: 'underline'
 

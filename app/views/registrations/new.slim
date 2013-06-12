@@ -36,7 +36,6 @@ div.centerModal
 					div.row
 						div.three.columns 
 						div.five.columns 
-							/ = f.label :remember_me, "Forget pwd?"
 							= link_to 'Sign in with Google account', user_omniauth_authorize_path(:google_oauth2), class: 'underline'
 						div.four.columns
 							= f.submit 'Sign Up', class: 'button radius right inline'

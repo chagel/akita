@@ -6,6 +6,7 @@ Akita::Application.routes.draw do
 		:omniauth_callbacks => "users/omniauth_callbacks",
 		:sessions => 'sessions',
 		:registrations => 'registrations',
+		:passwords => 'passwords'
 	} 
 	
 	devise_scope :user do 

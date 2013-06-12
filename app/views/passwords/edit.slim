@@ -1,0 +1,26 @@
+div.centerModal
+	div.row
+		= form_for resource, :as => resource_name, :url => user_password_path, :html => {method: 'put'} do |f|
+			= devise_error_messages!
+			= f.hidden_field :reset_password_token
+			div.six.columns.centered
+				div.panel.radius
+					div.row
+						div.three.columns
+							= f.label :password, class: 'inline'
+						div.nine.columns
+							= f.password_field :password
+					div.row
+						div.three.columns
+							= f.label :password_confirmation, 'Password confirmation', class: 'inline'
+						div.nine.columns
+							= f.password_field :password_confirmation
+						
+					div.row
+						div.three.columns 
+							= link_to "Back", "javascript: history.back();", class: 'underline inline'
+						div.three.columns 
+							
+						div.six.columns 
+							= f.submit 'Send', class: 'button radius inline right'
+							

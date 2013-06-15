@@ -49,7 +49,7 @@ class Link
 		if self.tag_names.present? && self.tag_names_changed?
 			self.tags = []
 			self.tag_names.split(/[,|，|\s]/).each do |name|
-				tag = Tag.find_or_create_by(name: name.strip)
+				tag = Tag.find_or_create_by(name: name.strip.downcase)
 				self.tags << {id: tag.id, slug: tag.slug, name: tag.name}
 			end 
 		end

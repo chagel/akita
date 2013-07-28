@@ -1,0 +1,14 @@
+div.row
+	div.two.columns
+	div.eight.columns
+		ul.pricing-table
+			li.title
+				= @list.title
+
+			li.description
+				= @list.tag_names
+
+			- @list.urls.each_with_index do |url, index|
+				li.bullet-item
+					= link_to url, url
+	div.two.columns

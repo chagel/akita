@@ -1,8 +1,9 @@
 #encoding: utf-8
 
 class ListsController < ApplicationController
-	before_filter :authenticate_user!
+	before_filter :authenticate_user!, except: :show
 	layout 'simple', only: :create
+	layout 'less', only: :show
 	before_filter :find_list
 
 	def create
@@ -15,7 +16,7 @@ class ListsController < ApplicationController
 	end
 
 	def index
-		@lists = current_user.lists.order_by('id desc').page(params[:page])
+		@lists = current_user.lists.order_by('updated_at desc').page(params[:page])
 	end
 
 	def edit

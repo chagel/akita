@@ -13,7 +13,7 @@ div.centerModal
 						div.eight.columns
 							= f.text_field :email, class: 'email', placeholder: "", value: current_user && current_user.email
 						div.two.columns
-							= f.submit 'Go', class: 'radius button success inline'
+							= f.submit 'Join', class: 'radius button success inline'
 					div.row
 						p.text-center
 							= link_to 'Existing user?', login_path, class: 'underline bold '

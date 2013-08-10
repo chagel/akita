@@ -7,6 +7,6 @@ class TagsController < ApplicationController
 	end
 
 	def index
-		@tags = Tag.asc(:slug).page(params[:page]).per(100)
+		@tags = Tag.asc(:slug).page(params[:page]).per(1000)
 	end
 end

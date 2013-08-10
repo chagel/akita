@@ -12,5 +12,6 @@
  *= require foundation_and_overrides
  *= require select2
  *= require select2_custom
+ *= require social-share-button
  *= require_tree .
  */

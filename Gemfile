@@ -25,7 +25,7 @@ gem 'slim'
 gem 'nokogiri'
 gem 'rails_admin'
 gem 'exception_notification'
-
+gem 'social-share-button'
 
 group :development do
   gem 'thin'

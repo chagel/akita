@@ -2,11 +2,7 @@ doctype html
 html
   = render :partial => 'layouts/head' 
   body
-    div.mt5
+    div.mt1
       = yield
-      
-    footer.row
-      div.twelve.columns
-        div.text-center.mt1
-          span.round.success.label
-            = link_to 'weed30.com', 'http://weed30.com'
+
+    = javascript_include_tag "application"

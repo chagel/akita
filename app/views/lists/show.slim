@@ -1,14 +1,22 @@
 div.row
-	div.two.columns
-	div.eight.columns
-		ul.pricing-table
-			li.title
-				= @list.title
+  div.two.columns
+  div.eight.columns
+    ul.pricing-table
+      li.title
+        = @list.title
 
-			li.description
-				= @list.tag_names
+      li.description
+        = render_list_tags @list
 
-			- @list.urls.each_with_index do |url, index|
-				li.bullet-item
-					= link_to url, url
-	div.two.columns
+      - @list.urls.each_with_index do |url, index|
+        li.bullet-item
+          = link_to url, url
+
+  div.two.columns
+
+  div.twelve.columns
+    div.text-center
+      = social_share_button_tag "#{@list.title} #{plain_list_tags(@list)}", :url => list_path(@list)
+      br
+      span.round.success.label
+        = link_to 'weed30.com', 'http://weed30.com'

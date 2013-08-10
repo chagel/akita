@@ -4,8 +4,7 @@ div.list data-list-id=[list.id]
 		div.mt1
 			- unless list.tags.blank?
 				span.mr1
-					- list.tags.each do |tag|
-						= link_to tag[:name]||tag['name'], '#', class: 'tag'
+					= render_list_tags list
 	ol.mt1
 		- list.urls.each do |url|
 			li 

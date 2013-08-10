@@ -16,3 +16,5 @@
 //= require select2
 //= require mousetrap
 //= require main
+//= require social-share-button
+//= require ga

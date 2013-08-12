@@ -72,12 +72,17 @@ first = ->
 		goto row.offset().top, -10
 
 links_new = ->
-	$("#new_link").reveal()
+	init_modal_with_form()
 	$('dd.linktab a').click()
 
 lists_new = ->
-	$('#new_link').reveal()
+	init_modal_with_form()	
 	$('dd.listtab a').click()
+
+init_modal_with_form = ->
+	$('#new_link').reveal()
+	$("#link_tag_names").tagit({fieldName: 'link[tag_names]', singleField: true, singleFieldDelimiter: ' ', autocomplete: {delay: 0, minLength: 2, source: '/search/tag'}})
+	$("#list_tag_names").tagit({fieldName: 'list[tag_names]', singleField: true, singleFieldDelimiter: ' ', autocomplete: {delay: 0, minLength: 2, source: '/search/tag'}})
 
 loop_link = (current, targets, step) ->
 	for link, index in targets

@@ -10,11 +10,13 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
+//= require jquery.min
 //= require jquery_ujs
+//= require jquery-ui.min
 //= require foundation
 //= require select2
 //= require mousetrap
 //= require main
 //= require social-share-button
 //= require ga
+//= require tag-it.min

@@ -13,5 +13,8 @@
  *= require select2
  *= require select2_custom
  *= require social-share-button
+ *= require jquery-ui
+ *= require jquery.tagit
+ *= require tagit.ui-akita
  *= require_tree .
  */

@@ -16,7 +16,10 @@ div.row
 	div.two.columns
 		= f.label :tag_names, 'Tags', class: "right inline"
 	div.ten.columns
-		= f.text_field :tag_names, class: 'eleven', placeholder: 'keywords seprated by comma or space'
+		- unless f.object.new_record?
+			= f.text_field :tag_names, class: 'eleven', placeholder: 'keywords seprated by comma or space'
+		- else
+			ul#link_tag_names.eleven
 
 div.row
 	div.two.columns
